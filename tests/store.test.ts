@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type CardInput } from 'ts-fsrs';
 import type { Direction, GradeInput, Snapshot, Word } from '../contract';
-import { createStore, StoreError, type Store } from '../lib/store';
+import { createStore, RETENTION, StoreError, type Store } from '../lib/store';
 
 const words: Word[] = [
   { id: 'food-001', fr: 'le pain', en: 'bread', category: 'food' },
@@ -379,7 +379,7 @@ describe('FSRS and transactional protection', () => {
     expect(state.current).toBeNull();
     const exported = progress(store);
     expect(exported.grades.filter((grade) => grade.fsrsLog).map((grade) => grade.fsrsLog!.rating)).toEqual([Rating.Again]);
-    const expected = fsrs({ enable_short_term: false, enable_fuzz: false }).next(initial, clock.value, Rating.Again);
+    const expected = fsrs({ enable_short_term: false, enable_fuzz: false, request_retention: RETENTION }).next(initial, clock.value, Rating.Again);
     expect(exported.cards[0]!.fsrs).toEqual(JSON.parse(JSON.stringify(expected.card)));
     expect(new Date(state.nextDue!).getTime()).toBeGreaterThanOrEqual(new Date(2026, 8, 22, 4).getTime());
     expect(store.browse('fr-en', 'all').filter((word) => word.status === 'scheduled')).toHaveLength(1);
@@ -703,7 +703,7 @@ describe('extra practice', () => {
     // Its last cycle had no miss, so knowing it once finishes it.
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
-    const scheduler = fsrs({ enable_short_term: false, enable_fuzz: false });
+    const scheduler = fsrs({ enable_short_term: false, enable_fuzz: false, request_retention: RETENTION });
     const early = scheduler.next(firstFinish, clock.value, Rating.Good).card;
     const onTime = scheduler.next(firstFinish, new Date(firstFinish.due), Rating.Good).card;
     const reviewed = progress(store).cards.find((card) => card.word_id === 'food-001')!.fsrs;

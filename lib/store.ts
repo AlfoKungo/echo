@@ -123,6 +123,7 @@ export const SCORE_HALF_LIFE_DAYS = 21;
 // A due word at or above this score, known straight away, finishes its cycle on that one success. Measured on the
 // learner's own history: after a first success on a due word, the second came right 97% of the time from score 4 up.
 export const SCORE_ONE_RECALL = 4;
+export const RETENTION = 0.85;
 // The most words the Board lays out at once.
 export const BOARD_LIMIT = 100;
 // Board's score range runs over Statistics' bars: a score rounds to a whole number, and anything below BOARD_SCORE_LOW
@@ -257,7 +258,10 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   if (dbPath !== ':memory:') mkdirSync(dirname(dbPath), { recursive: true });
   const db = new Database(dbPath, { create: true, strict: true });
   db.exec('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 5000;');
-  const scheduler = fsrs({ enable_short_term: false, enable_fuzz: false });
+  // A word comes due when the chance of still knowing it falls to RETENTION. Below FSRS's 0.9, the gaps between
+  // reviews grow faster (a word known each time: 4, 31, 173 days rather than 3, 14, 57), for a few more misses per
+  // review: fewer words a day.
+  const scheduler = fsrs({ enable_short_term: false, enable_fuzz: false, request_retention: RETENTION });
   db.transaction(() => {
     db.exec(`
       CREATE TABLE IF NOT EXISTS settings (
