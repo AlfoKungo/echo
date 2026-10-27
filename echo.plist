@@ -6,6 +6,8 @@
   <key>WorkingDirectory</key><string>/Users/galt/echo</string>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
+  <!-- Unset, launchd throttles the job's CPU and disk I/O; a swapped-out Echo then pages back in at that pace and a tap waits. -->
+  <key>ProcessType</key><string>Interactive</string>
   <key>StandardOutPath</key><string>/Users/galt/echo/data/server.log</string>
   <key>StandardErrorPath</key><string>/Users/galt/echo/data/server.log</string>
   <key>EnvironmentVariables</key><dict>
