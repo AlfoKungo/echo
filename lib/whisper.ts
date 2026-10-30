@@ -89,10 +89,12 @@ export function createWhisper(options: WhisperOptions) {
     }
   }
 
+  // Starts recognition ahead of the first clip (Speak's Start), so that clip is not kept waiting on the model loading.
+  function warm(): Promise<void> { lastUse = Date.now(); return ensure(); }
   // Stops recognition after IDLE without a clip; the next clip starts it again.
   function sweep() { if (child && Date.now() - lastUse > IDLE) { child.kill(); child = null; ready = null; } }
   function stop() { child?.kill(); child = null; ready = null; }
-  return { open, sweep, stop };
+  return { open, warm, sweep, stop };
 }
 export type Whisper = ReturnType<typeof createWhisper>;
 // The loudest sample of a 16-bit PCM WAV, 0 to 1 (the samples are in its "data" chunk).

@@ -3242,11 +3242,15 @@ function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; els
 // "I said it right" teaches Echo what it heard (api/say/correct) and re-marks that answer as right. iPhone stops the
 // microphone when the screen locks or Echo leaves the screen, so the screen is kept awake while Say listens, and Say
 // pauses if it goes away; it needs a tap to start again.
-const SAY_QUIET_MS = 700;
+const SAY_QUIET_MS = 550;
 const SAY_RESUME_MS = 1600;
 const SAY_LONGEST_MS = 8000;
 const SAY_WAIT_MS = 40000;
-const SAY_SHOW_MS = 900;
+const SAY_SHOW_MS = 500;
+// A check that has not answered in SAY_CHECK_MS is sent again: the phone's request can stall on the way to the Mac
+// and would otherwise wait for good. The Mac's own work on it goes on, so a slow first check (the model still
+// loading) is answered by the next try.
+const SAY_CHECK_MS = 6000;
 // A moment of silence played on Start, inside the tap, so Safari lets the words that follow play without one.
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 const sayAudio = new Audio();
@@ -3299,6 +3303,7 @@ async function startSay() {
   sayAudio.src = SILENT_WAV; sayAudio.play().catch(() => {});
   sayContext ??= new (window.AudioContext || window.webkitAudioContext)();
   sayContext.resume().catch(() => {});
+  fetch('api/say/warm', { method: 'POST' }).catch(() => {});
   say = { ...say, running: true, phase: 'starting', error: '', result: null, token: say.token + 1 };
   const token = say.token;
   render();
@@ -3465,10 +3470,14 @@ function sayResumes(token, answer) {
 }
 async function sayCheck(card, clip, request) {
   let response;
-  try { response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store' }); }
+  try { response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store', signal: AbortSignal.timeout(SAY_CHECK_MS) }); }
   catch { throw Object.assign(new Error('Echo couldn’t reach your Mac to check that answer. Check your connection, then tap the card to go on.'), { network: true }); }
   let data;
-  try { data = await response.json(); } catch { throw new Error('Your Mac returned an unreadable response.'); }
+  try { data = await response.json(); }
+  catch (error) {
+    if (error.name === 'TimeoutError' || error.name === 'AbortError') throw Object.assign(new Error('Echo couldn’t reach your Mac to check that answer. Check your connection, then tap the card to go on.'), { network: true });
+    throw new Error('Your Mac returned an unreadable response.');
+  }
   if (!response.ok) throw new Error(data.error || `Checking failed (${response.status}).`);
   return data;
 }

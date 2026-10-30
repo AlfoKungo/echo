@@ -791,6 +791,10 @@ async function route(req: Request): Promise<Response> {
     }
     // Heard wrong: the learner says they said it right. What was heard counts as the word's English from then on;
     // the phone re-marks the answer itself as right.
+    if (path === '/api/say/warm' && req.method === 'POST' && !roomsOff.includes('say')) {
+      whisper.warm().catch((error: Error) => console.error(`say: recognition did not start: ${error.message}`));
+      return json({ ok: true });
+    }
     if (path === '/api/say/correct' && req.method === 'POST' && !roomsOff.includes('say')) {
       const data = await body(req);
       const requestId = String(data.request ?? '');
