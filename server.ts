@@ -32,7 +32,7 @@ import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMuta
 import type { StreamId } from './comprehension-contract';
 import { backup as snapshot, offsite, OFFSITE_DIR } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
-import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
+import { answers, answerTexts, hint, judge, learnable, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 import { createNews } from './lib/news';
@@ -789,20 +789,21 @@ async function route(req: Request): Promise<Response> {
         recording.close();
       }
     }
-    // Heard wrong: the learner says they said it right. What was heard counts as the word's English from then on;
-    // the phone re-marks the answer itself as right.
     if (path === '/api/say/warm' && req.method === 'POST' && !roomsOff.includes('say')) {
       whisper.warm().catch((error: Error) => console.error(`say: recognition did not start: ${error.message}`));
       return json({ ok: true });
     }
+    // Heard wrong: the learner says they said it right. What was heard counts as the word's English from then on,
+    // unless it was giving up or noise (say-check learnable); the phone re-marks the answer itself as right.
     if (path === '/api/say/correct' && req.method === 'POST' && !roomsOff.includes('say')) {
       const data = await body(req);
       const requestId = String(data.request ?? '');
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
       const wordId = String(data.word ?? ''), heard = said(String(data.heard ?? ''));
-      store.acceptSaid({ wordId, heard });
+      const learnt = learnable(heard);
+      if (learnt) store.acceptSaid({ wordId, heard });
       sayClips.markedRight(requestId);
-      console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right; "${heard}" now counts for it`);
+      console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right${learnt ? `; "${heard}" now counts for it` : ''}`);
       return json({ ok: true });
     }
     const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);

@@ -122,13 +122,19 @@ function matches(heard: string[], wanted: string[]): boolean {
   return false;
 }
 
+// Whether what was heard may be kept as a word's English: not giving up, thinking aloud or recognition's noise.
+export const learnable = (heard: string) => judge(heard, '') === 'wrong';
 // What was said, as it is kept when the learner marks it right after Echo heard it wrong.
 export const said = (heard: string) => heardWords(heard).join(' ');
 const startsWith = (phrase: string, start: string) => phrase === start || (phrase.startsWith(start + ' ') && phrase.split(' ').length <= start.split(' ').length + 3);
 
+// A word dropped as a filler may be part of the answer ("so" in "so that"), so the words as heard are tried too.
+// What was marked as heard wrong counts only when it is an answer of some kind: giving up or recognition's
+// noise ("I don't know", "Thank you") is never learnt as a word's English.
 export function judge(heard: string, english: string, accepted: readonly string[] = []): SayVerdict {
-  const list = heardWords(heard), phrase = list.join(' ');
-  if (list.length && (accepted.includes(phrase) || answers(english).some((wanted) => matches(list, wanted)))) return 'right';
+  const list = heardWords(heard), phrase = list.join(' '), whole = trimLeading(words(heard));
+  const wanted = answers(english);
+  if ((list.length && accepted.includes(phrase) && learnable(phrase)) || [list, whole].some((each) => each.length && wanted.some((answer) => matches(each, answer)))) return 'right';
   if (DONT_KNOW.some((start) => startsWith(phrase, start))) return 'dontknow';
   if (!list.length || NOTHING.has(plain(heard)) || THINKING.includes(phrase) || list.every((word) => SMALL.has(word))) return 'unclear';
   return 'wrong';

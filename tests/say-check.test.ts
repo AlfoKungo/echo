@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { answerTexts, hint, judge, said } from '../lib/say-check';
+import { answerTexts, hint, judge, learnable, said } from '../lib/say-check';
 
 test('any one meaning counts, without brackets or a leading to, the, a or an', () => {
   expect(judge('Wealthy.', 'rich; wealthy')).toBe('right');
@@ -49,6 +49,14 @@ test('what the learner marked as heard wrong counts for that word from then on',
   expect(said('An umbrella.')).toBe('umbrella');
   expect(judge('Umbrella!', 'lock (mechanism)', [said('An umbrella.')])).toBe('right');
   expect(judge('Key.', 'lock (mechanism)', [said('An umbrella.')])).toBe('wrong');
+  // Giving up or noise marked right is never kept as the word's English.
+  expect([learnable(said('I don\'t know.')), learnable(said('Thank you.')), learnable(said('Umbrella.'))]).toEqual([false, false, true]);
+  expect(judge('I don\'t know.', 'so that', [said('I don\'t know.')])).toBe('dontknow');
+});
+
+test('a word that is a filler elsewhere counts when it is part of the answer', () => {
+  expect([judge('So that.', 'so that'), judge('Well.', 'well (adverb)'), judge('Okay.', 'okay; fine')]).toEqual(['right', 'right', 'right']);
+  expect([judge('So, frog.', 'frog'), judge('So.', 'frog'), judge('That.', 'so that')]).toEqual(['right', 'unclear', 'unclear']);
 });
 
 test('a word that sounds like the answer counts; a different word does not', () => {
