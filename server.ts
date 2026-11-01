@@ -487,7 +487,9 @@ const talk = voice ? createTalk({
 const sweepTalkClips = () => { try { const gone = voice?.sweepClips() ?? 0; if (gone) console.log(`talk: deleted ${gone} lines untouched for a week`); } catch (error) { console.error(`talk: sweeping old lines failed: ${(error as Error).message}`); } };
 sweepTalkClips();
 const talkClipSweep = setInterval(sweepTalkClips, 60 * 60_000);
-const voiceSweep = setInterval(() => voice?.sweep(), 60_000);
+// The voice goes after two idle minutes, not ten: the background recorder (radioThenSentences) loads its own copy of
+// the same model after three quiet minutes, and two at once is the largest memory peak Talk could add.
+const voiceSweep = setInterval(() => voice?.sweep(2 * 60_000), 60_000);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
 // Walkman tapes live in memory, the latest few only; clips are re-read whenever they are rebuilt.

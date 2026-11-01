@@ -949,6 +949,10 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         if (!words.some((word) => inDeck(word.id, input.deck) && !started.has(word.id))) {
           throw new StoreError(input.deck === 'all' ? 'You have already started every word in Echo.' : 'You have already started every word in this category. Choose All words to learn more.');
         }
+        const fromFrench = input.direction === 'en-fr' ? knownFromFrench(at.getTime()) : null;
+        if (fromFrench && !words.some((word) => inDeck(word.id, input.deck) && !started.has(word.id) && ready(word.id) && fromFrench.has(word.id))) {
+          throw new StoreError('Every word you know well from French is already started this way. More come as you finish words French → English.');
+        }
         addExtra.run(input.direction, studyDay(at), input.count);
         admit(input.direction, input.deck, at);
       }

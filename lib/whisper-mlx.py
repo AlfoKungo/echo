@@ -11,9 +11,21 @@
 # One request at a time, as the GPU runs one model; the clip's encoding is kept for a score that follows its
 # transcription.
 import json
+import os
 import sys
+import threading
 import wave
 from http.server import BaseHTTPRequestHandler, HTTPServer
+
+
+# Echo holds this process's stdin open while it runs; it closes however Echo stops (a crash too), and then this
+# process goes, rather than keep the port and the GPU's memory for an Echo that is gone.
+def leave_with_echo():
+    sys.stdin.read()
+    os._exit(0)
+
+
+threading.Thread(target=leave_with_echo, daemon=True).start()
 
 import mlx.core as mx
 import mlx_whisper

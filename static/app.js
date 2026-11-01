@@ -54,10 +54,11 @@ if (!['read', 'listen', 'speak'].includes(practiceWay)) practiceWay = 'read';
 let heardCard = '';
 // Speak is offered on the Words cards (not in Practise), in the Echo that has it.
 const speakOffered = () => screen === 'practice' && !roomsOff.has('say');
-// The way the card on screen is practised: Read where Speak is not offered, and Read for Listen in English → French
-// (Listen plays the learnt word, which English → French asks for). Speak works both ways: it answers in English
-// from French, and in French from English.
-const wayNow = () => (practiceWay === 'speak' && !speakOffered()) || (direction !== 'fr-en' && practiceWay === 'listen') ? 'read' : practiceWay;
+// English → French keeps its own way, Read or Speak (Listen would play the answer), so Speak chosen from French does
+// not open the microphone from English, nor Read chosen there turn French → English back to Read.
+let practiceWayFromEnglish = readPreference('echo.way-en-fr', 'read') === 'speak' ? 'speak' : 'read';
+// The way the card on screen is practised: its direction's own, and Read where Speak is not offered.
+const wayNow = () => { const way = direction === 'fr-en' ? practiceWay : practiceWayFromEnglish; return way === 'speak' && !speakOffered() ? 'read' : way; };
 const listening = () => wayNow() === 'listen';
 const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
 const micIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>';
@@ -1407,14 +1408,17 @@ if ('mediaSession' in navigator) {
 function availabilityCopy() {
   const stats = snapshot.stats;
   const recording = stats.recording || 0;
+  // English → French holds back words not yet known well from French (notKnown): they come once known, not at 04:00.
+  const waiting = stats.notKnown || 0, coming = stats.unseen - recording - waiting;
   const when = [];
   if (snapshot.nextDue) when.push(`Next review ${whenLabel(snapshot.nextDue)}`);
-  if (stats.unseen - recording > 0 && stats.newAvailable === 0 && snapshot.settings.newPerDay > 0) when.push(when.length ? 'new words at 04:00' : 'New words at 04:00');
+  if (coming > 0 && stats.newAvailable === 0 && snapshot.settings.newPerDay > 0) when.push(when.length ? 'new words at 04:00' : 'New words at 04:00');
   const notes = [];
   const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
   if (deck !== 'all' && stats.newAvailable === 0 && elsewhere > 0) notes.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in Words options to continue.`);
   if (recording > 0 && stats.newAvailable === 0) notes.push(`${formatCount(recording)} ${recording === 1 ? 'word is' : 'words are'} still being recorded on your Mac.`);
-  if (stats.unseen - recording > 0 && stats.newAvailable === 0 && snapshot.settings.newPerDay === 0) notes.push('New words are paused with your daily allowance at 0.');
+  if (waiting > 0 && stats.newAvailable === 0) notes.push(`${formatCount(waiting)} ${waiting === 1 ? 'word waits' : 'words wait'} until you know ${waiting === 1 ? 'it' : 'them'} well from ${languageEnglish}.`);
+  if (coming > 0 && stats.newAvailable === 0 && snapshot.settings.newPerDay === 0) notes.push('New words are paused with your daily allowance at 0.');
   const line = [when.join(' · '), ...notes].filter(Boolean).join(when.length ? '. ' : ' ');
   return line || 'You’re up to date in this vocabulary selection.';
 }
@@ -1432,8 +1436,9 @@ const PAUSE_COUNTS = [15, 20, 30];
 function pauseKinds() {
   const stats = snapshot.stats;
   const several = (n, one, many) => n === 1 ? one : many.replace('#', n);
+  const startable = stats.unseen - (stats.notKnown || 0);
   return {
-    new: { label: 'New words', available: stats.unseen, detail: stats.unseen ? `${formatCount(stats.unseen)} not started${snapshot.extraToday ? ` · ${formatCount(snapshot.extraToday)} extra already today` : ''}` : 'Every word here is already started', go: (n) => several(n, 'Add 1 new word', 'Add # new words') },
+    new: { label: 'New words', available: startable, detail: startable > 0 ? `${formatCount(startable)} not started${snapshot.extraToday ? ` · ${formatCount(snapshot.extraToday)} extra already today` : ''}` : stats.unseen ? `The rest wait until you know them well from ${languageEnglish}` : 'Every word here is already started', go: (n) => several(n, 'Add 1 new word', 'Add # new words') },
     soonest: { label: 'Due soonest', available: stats.scheduled, detail: stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', go: (n) => several(n, 'Review the one due soonest', 'Review the # due soonest') },
     missed: { label: 'Most missed', available: stats.scheduledMissed, detail: stats.scheduledMissed ? `${formatCount(stats.scheduledMissed)} missed at least once` : 'No missed words are waiting', go: (n) => several(n, 'Review the one missed most', 'Review the # missed most') },
   };
@@ -1484,9 +1489,10 @@ function extraPracticeHTML() {
     return `<form class="custom-count" data-kind="${kind}" ${mode ? `data-mode="${mode}"` : ''} novalidate><label class="sr-only" for="${id}">${esc(label)}</label><input id="${id}" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom" ${off(enabled)}><button class="secondary chip" type="submit" ${off(enabled)}>${verb}</button></form>`;
   };
   const row = (title, detail, controls) => `<div class="extra-row"><div><p>${title}</p><small>${esc(detail)}</small></div><div class="extra-controls">${controls}</div></div>`;
-  const newDetail = !stats.unseen ? 'Every word here is already started' : snapshot.extraToday ? `${formatCount(snapshot.extraToday)} extra added today · resets at 04:00` : 'Today only · resets at 04:00';
+  const startable = stats.unseen - (stats.notKnown || 0);
+  const newDetail = !startable ? (stats.unseen ? `The rest wait until you know them well from ${languageEnglish}` : 'Every word here is already started') : snapshot.extraToday ? `${formatCount(snapshot.extraToday)} extra added today · resets at 04:00` : 'Today only · resets at 04:00';
   const review = (mode, available, noun) => `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="review-early" data-mode="${mode}" data-count="${count}"`, count, `Review ${count} ${noun}`, available > 0)).join('')}</div>${custom('review-early', mode, `How many ${noun} to review`, 'Review', available > 0)}`;
-  const extra = `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, stats.unseen > 0)).join('')}</div>${custom('extra-words', '', 'How many new words to add today', 'Add', stats.unseen > 0)}`;
+  const extra = `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, startable > 0)).join('')}</div>${custom('extra-words', '', 'How many new words to add today', 'Add', startable > 0)}`;
   return `<section class="extra-practice">
     ${row('New words today', newDetail, extra)}
     ${row('Review due soonest', stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', review('soonest', stats.scheduled, 'words due soonest'))}
@@ -5841,8 +5847,10 @@ function vocabularyCard() { return !!shownCard() && (screen === 'practice' || (m
 // Read · Listen · Speak, under the card. Speak opens the microphone inside this tap, as iPhone requires; the
 // others close it.
 function choosePracticeWay(way) {
-  if (way === practiceWay || !['read', 'listen', 'speak'].includes(way)) return;
-  practiceWay = way; savePreference('echo.way', way);
+  const fromFrench = direction === 'fr-en';
+  if (way === (fromFrench ? practiceWay : practiceWayFromEnglish) || !(fromFrench ? ['read', 'listen', 'speak'] : ['read', 'speak']).includes(way)) return;
+  if (fromFrench) { practiceWay = way; savePreference('echo.way', way); }
+  else { practiceWayFromEnglish = way; savePreference('echo.way-en-fr', way); }
   heardCard = ''; stopAudio();
   if (sayHere()) { startSay(); return; }
   say.fix = null; say.error = '';

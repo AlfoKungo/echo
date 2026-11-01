@@ -17,9 +17,10 @@ export function createLocalModel(options: LocalModelOptions) {
   const base = `http://127.0.0.1:${options.port}`;
 
   function start(): Promise<void> {
-    // Offline: the model is already in the Hugging Face cache, and a start must not wait on the network.
+    // Offline: the model is already in the Hugging Face cache, and a start must not wait on the network. stdin stays
+    // an open pipe: the process leaves when it closes, so it never outlives Echo.
     const spawned = Bun.spawn([options.python, options.script, String(options.port), ...options.args], {
-      env: { ...process.env, HF_HUB_OFFLINE: '1' }, stdout: 'ignore', stderr: 'inherit',
+      env: { ...process.env, HF_HUB_OFFLINE: '1' }, stdin: 'pipe', stdout: 'ignore', stderr: 'inherit',
       onExit: () => { if (child === spawned) { child = null; ready = null; } },
     });
     child = spawned;
