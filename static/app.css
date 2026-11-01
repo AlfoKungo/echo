@@ -548,6 +548,15 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:var(--fs-3xl);letter-spacing:-
 .vb-card-meaning{font-size:var(--fs-4xl);line-height:1.25;overflow-wrap:anywhere}
 .write-en{margin:0;font-size:var(--fs-2xl);line-height:1.4;font-weight:500;color:var(--ink)}.write .vb-prompt .vb-tense{margin-top:14px}
 .write .feedback p{margin:8px 0 0}.write-fix{color:var(--violet)}
+/* Dictation: play, the answer line and the accent keys hold their places; the result appears under them. A letter of
+   the sentence missing or wrong is peach and underlined, a letter typed that is not in it peach and struck through, a
+   letter whose accent alone differs gets a dotted muted underline (a note, not a slip). */
+.dict-play{display:flex;justify-content:center;margin:8px 0 6px}
+.dict .feedback.warn{color:var(--ink)}.dict .feedback.warn strong{color:var(--danger)}
+.dict .feedback p{margin:8px 0 0}.dict-line{display:flex;flex-direction:column}
+.dict-label{color:var(--muted);font-size:var(--fs-xs)}.dict-text{font-size:var(--fs-xl);line-height:1.45;overflow-wrap:anywhere}
+.dm-missing{color:var(--peach);text-decoration:underline 2px;text-underline-offset:4px}.dm-extra{color:var(--peach);text-decoration:line-through 2px}
+.dm-accent{text-decoration:underline dotted;text-decoration-color:var(--muted);text-underline-offset:4px}.dict-en{color:var(--muted)}
 /* In sentences: the sentence is the card's face, its blank a violet rule until the card turns and the form fills it. */
 .vb-sentence{margin:0;font-size:clamp(22px,5.6vw,27px);font-weight:500;line-height:1.45;letter-spacing:-.3px;overflow-wrap:anywhere}
 .vb-sentence-gap{display:inline-block;width:3.2em;height:1em;vertical-align:-.12em;border-bottom:2px solid var(--violet)}

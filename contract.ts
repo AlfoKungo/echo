@@ -302,3 +302,17 @@ export type GrammarMiss = { topicId: string; topicTitle: string; exerciseId: str
 // Complete sources (and most choose sources) use ____ for the missing text, so summaries can show the finished sentence.
 // GrammarCurrent.audio names the settled exercise's spoken French, audio/grammar/<exercise id>.mp3, when that file exists.
 // GET audio/grammar/:id.mp3 -> the spoken correct sentence, or actionable JSON error.
+
+// Dictation (Listen › Dictation, lib/dictation.ts). The French stays on the Mac until the answer is checked.
+// POST api/dictation/next {practising, exclude: ids just shown} -> {item: DictationItem | null, empty: why none (Sentence
+//   cards' reasons, or 'later' when every sentence is waiting for its return)}.
+// POST api/dictation/check {requestId, id, given} -> DictationResult; once per requestId.
+export type DictationItem = { id: string; level: GrammarLevel; audio: string; again: boolean };
+// right: the same once case, punctuation, apostrophes and spaces are set aside; accent: right but for accents.
+export type DictationVerdict = 'right' | 'accent' | 'wrong';
+// missing: a letter of the sentence the answer lacks or has wrong; extra: a letter typed that is not in it (or a wrong
+// one); accent: a letter of the sentence written with another accent.
+export type DictationMark = 'missing' | 'extra' | 'accent';
+export type DictationSegment = { text: string; mark?: DictationMark };
+// why: one line for each word where a missed letter is one French does not say.
+export type DictationResult = { verdict: DictationVerdict; given: DictationSegment[]; expected: DictationSegment[]; fr: string; en: string; why: string[] };

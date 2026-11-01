@@ -7,6 +7,7 @@ import { loadBank, loadCards, type Bank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
 import { SENTENCE_CLIP_VERSION } from './lib/comprehension-store';
 import { createSentenceCards, type PoolSentence } from './lib/sentence-cards';
+import { createDictation } from './lib/dictation';
 import { loadTenseDetector } from './lib/tenses';
 import { createGrammarEar } from './lib/grammar-ear';
 import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, VERB_TIMING, type Tape, type TapeItem } from './lib/walkman';
@@ -49,10 +50,12 @@ const root = import.meta.dir;
 const language = currentLanguage(root);
 // Rooms this Echo leaves out: those its language has no content for yet, and ECHO_ROOMS_OFF (the friends' pilot:
 // story,radio,songs,…, which write and record for one learner). The page carries the list, and the app hides those rooms.
+// Dictation is a Listen tab that keeps to Sentence cards' rules, so it goes where either room is off.
 const roomsOff = [...new Set([
   ...ROOMS.filter((room) => !language.rooms.includes(room)),
   ...(process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => room.trim()).filter((room) => /^[a-z]+$/.test(room)),
 ])];
+if ((roomsOff.includes('listen') || roomsOff.includes('sentences')) && !roomsOff.includes('dictation')) roomsOff.push('dictation');
 const has = (room: Room) => !roomsOff.includes(room);
 // A deck file in its language's content folder. French always has its deck; another language's Words starts empty
 // until its deck is written, and its files carry the learnt text under the language's code (lib/language.ts).
@@ -150,6 +153,8 @@ const cardLanes = join(dirname(dbPath), 'sentence-cards');
 const cardAudio = join(language.audio, 'sentences');
 const tenseDetector = sentenceCardsOn ? await loadTenseDetector(root) : null;
 let cardPool: PoolSentence[] = [];
+// The bank's part of the pool, which Dictation draws from (recorded in audio/comprehension).
+let bankPool: PoolSentence[] = [];
 async function buildCardPool() {
   if (!tenseDetector) return;
   const bankSentences: PoolSentence[] = bank.sentences.map(({ distractors: _distractors, ...sentence }) => ({
@@ -158,11 +163,17 @@ async function buildCardPool() {
   }));
   const written = await loadCards(root, [cardLanes], new Set(bank.sentences.map((sentence) => sentence.id)));
   cardPool = [...bankSentences, ...written.map((sentence) => ({ ...sentence, audio: `audio/sentences/${sentence.id}.mp3?v=1`, clip: join(cardAudio, `${sentence.id}.mp3`) }))];
+  bankPool = bankSentences;
 }
 await buildCardPool();
 const sentenceCards = sentenceCardsOn ? createSentenceCards({
   dbPath, pool: () => cardPool, vocabulary: () => store.listening(), recorded: (clip) => existsSync(clip),
   topics: () => course.topics.map((topic) => ({ id: topic.id, title: topic.title })),
+}) : null;
+// Dictation (Listen): the bank's recorded sentences at or below the Listen level, under Sentence cards' rules.
+const dictation = sentenceCards && has('dictation') ? createDictation({
+  dbPath, pool: () => bankPool, vocabulary: () => store.listening(), rules: sentenceCards.rules,
+  level: () => comprehension.summary().levels.find((entry) => entry.mode === 'listen')?.label ?? 'A1',
 }) : null;
 const texts = createTextTopup({
   root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(), attempts,
@@ -909,6 +920,8 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This phrase has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
+    if (dictation && path === '/api/dictation/next' && req.method === 'POST') return json(dictation.next(await body(req)));
+    if (dictation && path === '/api/dictation/check' && req.method === 'POST') return json(dictation.check(await body(req)));
     if (sentenceCards && path.startsWith('/api/sentences/')) {
       if (path === '/api/sentences/round' && req.method === 'POST') return json(sentenceCards.round(await body(req)));
       if (path === '/api/sentences/mark' && req.method === 'POST') return json(sentenceCards.mark(await body(req)));
@@ -1004,6 +1017,7 @@ async function stop() {
   changeIt?.close();
   verbSentences?.close();
   sentenceCards?.close();
+  dictation?.close();
   grammarEar?.close();
   sounds.close();
   verbs.close();

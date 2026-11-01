@@ -50,12 +50,18 @@ export function words(text: string): string[] {
   return text.normalize('NFC').toLowerCase().replace(/['`]/g, '’').replace(/’/g, '’ ')
     .replace(/[«»"“”.,!?;:()…\-–—]/g, ' ').split(/\s+/).filter(Boolean);
 }
-const fold = (word: string) => word.normalize('NFD').replace(/\p{M}/gu, '');
+export const fold = (word: string) => word.normalize('NFD').replace(/\p{M}/gu, '');
+// The written letters French does not say at the end of a word: final t, d, s, x and p, then a final mute e after at
+// least two letters (petit, temps, amie). Dictation explains a missed letter with these same rules (lib/dictation.ts).
+export const SILENT_CONSONANTS = /[tdspx]+$/;
+export const MUTE_E = /(..)e$/;
+// An ils form's -ent is silent (longer than ent itself, so dent and vent keep their sound).
+export const silentEnt = (word: string) => /ent$/.test(word) && word.length > 4;
 // A word as heard at the end of a form: its silent final consonants (t, d, s, x, p) and a final mute e dropped,
 // accents and ai folded together. Folding only ever makes two forms look more alike, so a doubt drops the item.
-const said = (word: string) => fold(word).replace(/[tdspx]+$/, '').replace(/(..)e$/, '$1').replace(/ai/g, 'e');
+const said = (word: string) => fold(word).replace(SILENT_CONSONANTS, '').replace(MUTE_E, '$1').replace(/ai/g, 'e');
 // An ils form's -ent is silent: what is left of it is heard, with its last consonant (prenn-, finiss-, aim-).
-const saidPlural = (word: string) => (/ent$/.test(word) && word.length > 4 ? fold(word).slice(0, -3).replace(/ai/g, 'e') : said(word));
+const saidPlural = (word: string) => (silentEnt(word) ? fold(word).slice(0, -3).replace(/ai/g, 'e') : said(word));
 // Starting with a vowel: after ils or elles the s links to it with a z (ils‿ont). An h never counts, mute or not.
 const VOWEL = /^[aàâäeéèêëiîïoôöuùûüœæ]/;
 

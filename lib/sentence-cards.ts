@@ -176,6 +176,7 @@ export function createSentenceCards(deps: {
     return { unseen: eligible(deps.pool(), rules(tenses, false)).items.filter((sentence) => !marked.has(sentence.id)).length, tenses };
   }
 
-  return { round, mark, options, setTopic, stock, line: () => line.get(), close: () => db.close() };
+  // rules: the room's filters for heard sentences, which Dictation keeps to as well (lib/dictation.ts).
+  return { round, mark, options, setTopic, stock, rules: (tenses: readonly DetectedTense[]) => rules(tenses, true), line: () => line.get(), close: () => db.close() };
 }
 export type SentenceCards = ReturnType<typeof createSentenceCards>;

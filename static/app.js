@@ -210,7 +210,7 @@ function chooseVerbTape(kind) {
 }
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
 const WORDS_TABS = { cards: 'Cards', endless: 'Endless', board: 'Board', ...(roomsOff.has('walkman') ? {} : { walkman: 'Walkman' }), ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
-const LISTEN_TABS = { listen: 'Questions', ...(roomsOff.has('sounds') ? {} : { sounds: 'Sounds' }), ...(roomsOff.has('sentencetape') ? {} : { 'listen-tape': 'Tape' }), ...(roomsOff.has('news') ? {} : { news: 'News' }) };
+const LISTEN_TABS = { listen: 'Questions', ...(roomsOff.has('sounds') ? {} : { sounds: 'Sounds' }), ...(roomsOff.has('dictation') ? {} : { dictation: 'Dictation' }), ...(roomsOff.has('sentencetape') ? {} : { 'listen-tape': 'Tape' }), ...(roomsOff.has('news') ? {} : { news: 'News' }) };
 // A device last on the old Say it tab opens on Endless, with Say on.
 let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
 let listenTab = (() => { const saved = readPreference('echo.listen-tab', 'listen'); return saved in LISTEN_TABS ? saved : 'listen'; })();
@@ -665,6 +665,7 @@ function render() {
   else if (screen === 'lyrics') renderLyrics();
   else if (screen === 'write') renderWrite();
   else if (screen === 'sounds') renderSounds();
+  else if (screen === 'dictation') renderDictation();
   else if (screen === 'sound') renderSound();
   else if (screen === 'verbs') renderVerbs();
   else if (screen === 'verbs-all') renderVerbAll();
@@ -4588,6 +4589,57 @@ function scChanged() {
   if (scCards && scCard()) topUpSentences(true); else startSentences();
 }
 
+// ── Dictation (Listen): hear a sentence, type it, Check. The French comes only with the result. The screen keeps one
+// frame from opening to result (play, the answer line, the accent keys); the result appears below it.
+let dict = null;              // { item, empty, result, given, requestId }
+let dictDraft = '';
+let dictChecking = false;
+const DICT_VERDICTS = { right: 'That’s right.', accent: 'Right — mind the accents.', wrong: 'Not quite.' };
+const DICT_EMPTY = { ...SC_EMPTY, recordings: 'None of these sentences is recorded yet.', later: 'All done for now — the sentences you missed come back tomorrow.' };
+// exclude: the sentence just shown, so Next never brings it straight back.
+async function loadDictation(exclude = []) {
+  loading = true; notice = null; retryAction = null; dictDraft = ''; dict = null; render();
+  try { const { item, empty } = await api('api/dictation/next', { method: 'POST', body: JSON.stringify({ practising: vbPractising(), exclude }) }); dict = { item, empty, result: null, given: '', requestId: requestId() }; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'dictation' }; }
+  loading = false;
+  if (screen !== 'dictation') return;
+  render();
+  if (dict?.item) { playFrench(dict.item.audio); main.querySelector('#dict-answer')?.focus({ preventScroll: true }); }
+}
+async function checkDictation() {
+  const given = main.querySelector('#dict-answer')?.value ?? dictDraft;
+  if (!dict?.item || dict.result || dictChecking || !given.trim()) return;
+  dictChecking = true; render();
+  try { dict.result = await api('api/dictation/check', { method: 'POST', body: JSON.stringify({ requestId: dict.requestId, id: dict.item.id, given }) }); dict.given = given; }
+  catch (error) { notice = { message: error.message }; }
+  dictChecking = false;
+  if (screen !== 'dictation') return;
+  render();
+  if (dict.result) main.querySelector('[data-action="dict-next"]')?.focus({ preventScroll: true });
+  else main.querySelector('#dict-answer')?.focus({ preventScroll: true });
+}
+// You wrote and It was, letters marked; each line of why opens with the French word it explains.
+function dictResultHTML() {
+  const { result } = dict;
+  const text = (segments) => segments.map((segment) => (segment.mark ? `<span class="dm-${segment.mark}">${esc(segment.text)}</span>` : esc(segment.text))).join('');
+  const line = (label, segments) => `<p class="dict-line"><span class="dict-label">${label}</span><span class="dict-text" lang="${languageTag}">${text(segments)}</span></p>`;
+  const why = (entry) => { const at = entry.indexOf(':'); return `<p class="vb-why"><span lang="${languageTag}">${esc(entry.slice(0, at))}</span>${esc(entry.slice(at))}</p>`; };
+  return `<div class="feedback${result.verdict === 'wrong' ? ' warn' : ''}" role="status"><strong>${DICT_VERDICTS[result.verdict]}</strong>${result.verdict === 'right' ? '' : line('You wrote', result.given)}${line('It was', result.expected)}<p class="dict-en">${esc(result.en)}</p>${result.why.map(why).join('')}</div>
+    <div class="stream-actions"><button class="primary" data-action="dict-next">Next sentence</button></div>`;
+}
+function renderDictation() {
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb dict">${listenTop()}${body}</section>`; };
+  if (!loading && dict && !dict.item) {
+    shell(`<div class="stream-empty"><p>${esc(DICT_EMPTY[dict.empty] || DICT_EMPTY.later)}</p></div>`);
+    return;
+  }
+  const result = dict?.result;
+  const waiting = loading || !dict?.item, closed = waiting || !!result || dictChecking;
+  shell(`<div class="dict-play"><button class="listen-play" data-action="dict-play" aria-label="Play the sentence" ${waiting ? 'disabled' : ''}>${speaker}</button></div>
+    <form class="vb-answer-row" id="dict-form"><input class="vb-input" id="dict-answer" lang="${languageTag}" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="What you heard" value="${esc(result ? dict.given : dictDraft)}" ${closed ? 'disabled' : ''}><button class="primary" ${closed ? 'disabled' : ''}>Check</button></form>${vbAccentsHTML()}
+    <div class="dict-result">${result ? dictResultHTML() : ''}</div>`);
+}
+
 // ── Type it: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
 // more forms are chosen from the answers so far while a few are still waiting.
 const topUpVerbForms = () => topUpVerbStream(verbForms, 'api/verbs/round', () => verbForms, 'verbs-forms');
@@ -5540,7 +5592,7 @@ function openListen(tab = listenTab, how = 'forward') {
   listenTab = tab; savePreference('echo.listen-tab', tab);
   if (how === 'switch') switchPlace(tab);
   else if (!move(tab, how === 'forward')) return;
-  if (tab === 'listen') enterStream(); else if (tab === 'sounds') loadSounds(); else if (tab === 'news') loadNews(); else loadTape();
+  if (tab === 'listen') enterStream(); else if (tab === 'sounds') loadSounds(); else if (tab === 'dictation') loadDictation(); else if (tab === 'news') loadNews(); else loadTape();
 }
 // A tab of the same room replaces the current place in history rather than adding one.
 function switchPlace(next) {
@@ -5917,6 +5969,7 @@ function retry() {
   else if (action.type === 'walkman') loadTape();
   else if (action.type === 'statistics') loadStatistics();
   else if (action.type === 'sounds') loadSounds();
+  else if (action.type === 'dictation') loadDictation();
   else if (action.type === 'sound') startSoundRound();
   else if (action.type === 'verbs') loadVerbs();
   else if (action.type === 'verbs-forms') startVerbForms();
@@ -5970,6 +6023,8 @@ document.addEventListener('click', (event) => {
   if (!button && screen === 'verbs-rules' && event.target.closest('#vb-card')) { revealRuleCard(); return; }
   if (!button && screen === 'verbs-sentences' && event.target.closest('#vb-sentence')) { revealVerbSentence(); return; }
   if (!button && screen === 'sentences' && event.target.closest('#sc-card')) { revealSentence(); return; }
+  if (action === 'dict-play') { if (dict?.item) playFrench(dict.item.audio); return; }
+  if (action === 'dict-next') { if (dict?.result) loadDictation([dict.item.id]); return; }
   if (action === 'sc-play') { const card = scCard(); if (card?.audio) playFrench(card.audio); return; }
   if (action === 'sc-got' || action === 'sc-not') { markSentence(action === 'sc-got'); return; }
   if (action === 'sc-mode') { chooseSentenceMode(button.dataset.mode); return; }
@@ -6154,6 +6209,7 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'song-query') songQuery = event.target.value;
   if (event.target.id === 'vb-answer') verbDraft = event.target.value;
   if (event.target.id === 'write-answer') writeDraft = event.target.value;
+  if (event.target.id === 'dict-answer') dictDraft = event.target.value;
   if (event.target.dataset?.vbCell !== undefined) verbTable.answers[Number(event.target.dataset.vbCell)] = event.target.value;
   if (event.target.id === 'st-slider') { stopStatsPlay(); showStatsDay(Number(event.target.value)); }
   if (event.target.id === 'vs-slider') { stopVerbPlay(); showVerbDay(Number(event.target.value)); }
@@ -6165,6 +6221,7 @@ document.addEventListener('submit', (event) => {
   else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
   else if (event.target.id === 'vb-form') { event.preventDefault(); submitVerbForm(); }
   else if (event.target.id === 'write-form') { event.preventDefault(); checkWrite(); }
+  else if (event.target.id === 'dict-form') { event.preventDefault(); checkDictation(); }
   else if (event.target.id === 'friend-form') { event.preventDefault(); saveFriend(document.querySelector('#friend-email').value, document.querySelector('#friend-name').value); }
 });
 document.addEventListener('keydown', (event) => {
@@ -6255,6 +6312,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'lyrics') loadLyrics();
   else if (screen === 'write') loadWrite();
   else if (screen === 'sounds') loadSounds();
+  else if (screen === 'dictation') loadDictation();
   else if (screen === 'sound') startSoundRound();
   else if (screen === 'verbs' || screen === 'verbs-all' || screen === 'verbs-tenses') loadVerbs();
   else if (screen === 'verbs-forms') startVerbForms();
