@@ -83,7 +83,8 @@ export function talkPrompt(context: TalkContext): string {
 Keep your French to what this learner practises:
 - verbs only in these tenses: ${tenses.map((tense) => TENSE_NAMES[tense]).join(', ')} (and the infinitive);
 - mostly words from the learner's vocabulary below, plus little words (articles, pronouns, prepositions), numbers and first names;
-- one or two short sentences, 20 words at most, everyday and natural; say tu to the learner; no English in reply_fr.
+- one or two short sentences, 20 words at most, everyday and natural; say tu to the learner; no English in reply_fr;
+- react to what they said as a friend would, and start each reply differently: never open two replies with the same word (D'accord, Super, Ah…).
 
 ${opening ? `Open the conversation: greet the learner in a few words and ask one simple question about ${topic.fr}.
 
