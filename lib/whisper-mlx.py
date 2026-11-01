@@ -1,9 +1,13 @@
 # Speech recognition for Say it on Apple's MLX: Whisper large-v3-turbo, loaded once and kept while Echo calls on it
-# (lib/whisper.ts starts and stops this). Two calls, both on a 16 kHz mono 16-bit WAV file Echo has written:
-#   POST /transcribe {"path", "prompt"} -> {"text"}: what was said; the prompt tells Whisper which words to expect.
-#   POST /score {"path", "texts"} -> {"scores"}: for each text, how likely Whisper finds it for the clip, as the sum of
-#     its tokens' log-probabilities with nothing forced and no prompt. Echo compares the answer it wanted with what
-#     was heard: an answer nearly as likely as the heard words was probably said, and recognition misread it.
+# (lib/whisper.ts starts and stops this). Two calls, both on a 16 kHz mono 16-bit WAV file Echo has written, each in
+# the language the learner answers in ("language", "en" when not given: French → English cards are answered in
+# English, English → French ones in French):
+#   POST /transcribe {"path", "prompt", "language"} -> {"text"}: what was said; the prompt tells Whisper which words
+#     to expect.
+#   POST /score {"path", "texts", "language"} -> {"scores"}: for each text, how likely Whisper finds it for the clip,
+#     as the sum of its tokens' log-probabilities with nothing forced and no prompt. Echo compares the answer it
+#     wanted with what was heard: an answer nearly as likely as the heard words was probably said, and recognition
+#     misread it.
 # One request at a time, as the GPU runs one model; the clip's encoding is kept for a score that follows its
 # transcription.
 import json
@@ -19,9 +23,18 @@ from mlx_whisper.tokenizer import get_tokenizer
 from mlx_whisper.transcribe import ModelHolder
 
 PORT, REPO = int(sys.argv[1]), sys.argv[2]
-# The same copy transcribe() uses, so scoring adds no second model.
+# The same copy transcribe() uses, so scoring adds no second model. A tokenizer per language: its start sequence
+# carries the language token, so a French text is scored as French.
 model = ModelHolder.get_model(REPO, mx.float16)
-tokenizer = get_tokenizer(multilingual=True, num_languages=model.num_languages, language="en", task="transcribe")
+tokenizers = {}
+
+
+def tokenizer_for(language):
+    if language not in tokenizers:
+        tokenizers[language] = get_tokenizer(multilingual=True, num_languages=model.num_languages, language=language, task="transcribe")
+    return tokenizers[language]
+
+
 encoded = {"path": None, "features": None}
 
 
@@ -32,16 +45,17 @@ def read(path):
         return np.frombuffer(clip.readframes(clip.getnframes()), np.int16).astype(np.float32) / 32768
 
 
-def transcribe(path, prompt):
-    result = mlx_whisper.transcribe(read(path), path_or_hf_repo=REPO, language="en", initial_prompt=prompt or None,
+def transcribe(path, prompt, language):
+    result = mlx_whisper.transcribe(read(path), path_or_hf_repo=REPO, language=language, initial_prompt=prompt or None,
                                     temperature=0.0, condition_on_previous_text=False, fp16=True)
     return result["text"].strip()
 
 
-def score(path, texts):
+def score(path, texts, language):
     if encoded["path"] != path:
         mel = log_mel_spectrogram(pad_or_trim(mx.array(read(path))), n_mels=model.dims.n_mels).astype(mx.float16)
         encoded["features"], encoded["path"] = model.encoder(mel[None]), path
+    tokenizer = tokenizer_for(language)
     start = list(tokenizer.sot_sequence_including_notimestamps)
     scores = []
     for text in texts:
@@ -61,9 +75,9 @@ class Handler(BaseHTTPRequestHandler):
         try:
             body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
             if self.path == "/transcribe":
-                self.reply(200, {"text": transcribe(body["path"], body.get("prompt", ""))})
+                self.reply(200, {"text": transcribe(body["path"], body.get("prompt", ""), body.get("language", "en"))})
             elif self.path == "/score":
-                self.reply(200, {"scores": score(body["path"], body["texts"])})
+                self.reply(200, {"scores": score(body["path"], body["texts"], body.get("language", "en"))})
             else:
                 self.reply(404, {"error": "not found"})
         except Exception as error:  # the reply carries it to Echo, which reports it

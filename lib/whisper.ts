@@ -17,10 +17,11 @@ export type Recording = {
   wav: string;
   // The loudest sample, 0 to 1: a clip that never gets loud held no answer, whatever recognition makes of it.
   peak: number;
-  // What was said, with `prompt` telling recognition which words to expect.
-  transcribe(prompt: string): Promise<string>;
-  // How likely recognition finds each text for the clip: summed log-probabilities, higher is likelier.
-  score(texts: string[]): Promise<number[]>;
+  // What was said, with `prompt` telling recognition which words to expect, in `language` (Whisper's code: the
+  // language the learner answers in).
+  transcribe(prompt: string, language?: string): Promise<string>;
+  // How likely recognition finds each text for the clip, in `language`: summed log-probabilities, higher is likelier.
+  score(texts: string[], language?: string): Promise<number[]>;
   close(): void;
 };
 
@@ -79,8 +80,8 @@ export function createWhisper(options: WhisperOptions) {
       return {
         wav,
         peak: peak(new Uint8Array(await Bun.file(wav).arrayBuffer())),
-        transcribe: async (prompt) => String((await call<{ text?: unknown }>('/transcribe', { path: wav, prompt })).text ?? '').trim(),
-        score: async (texts) => (await call<{ scores: number[] }>('/score', { path: wav, texts })).scores,
+        transcribe: async (prompt, language = 'en') => String((await call<{ text?: unknown }>('/transcribe', { path: wav, prompt, language })).text ?? '').trim(),
+        score: async (texts, language = 'en') => (await call<{ scores: number[] }>('/score', { path: wav, texts, language })).scores,
         close,
       };
     } catch (error) {

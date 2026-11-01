@@ -54,8 +54,10 @@ if (!['read', 'listen', 'speak'].includes(practiceWay)) practiceWay = 'read';
 let heardCard = '';
 // Speak is offered on the Words cards (not in Practise), in the Echo that has it.
 const speakOffered = () => screen === 'practice' && !roomsOff.has('say');
-// The way the card on screen is practised: always Read in English → French, and Read where Speak is not offered.
-const wayNow = () => direction !== 'fr-en' || (practiceWay === 'speak' && !speakOffered()) ? 'read' : practiceWay;
+// The way the card on screen is practised: Read where Speak is not offered, and Read for Listen in English → French
+// (Listen plays the learnt word, which English → French asks for). Speak works both ways: it answers in English
+// from French, and in French from English.
+const wayNow = () => (practiceWay === 'speak' && !speakOffered()) || (direction !== 'fr-en' && practiceWay === 'listen') ? 'read' : practiceWay;
 const listening = () => wayNow() === 'listen';
 const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
 const micIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>';
@@ -1554,9 +1556,9 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const face = hidden
     ? `<div class="card-over"></div><button class="listen-play" data-action="replay" aria-label="Play the ${languageEnglish} word again">${speaker}</button><div class="card-under">${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}</div>`
     : `${shown}<div class="card-under">${under}</div>`;
-  // How this card is practised, in French → English: Read, Listen, and Speak where it is offered.
-  const ways = direction === 'fr-en' ? [['read', 'Read', eyeIcon], ['listen', 'Listen', headphones], ...(speakOffered() ? [['speak', 'Speak', micIcon]] : [])] : [];
-  const wayChoice = ways.length ? `<div class="practice-way" role="group" aria-label="How you practise">${ways.map(([way, title, icon]) => `<button data-action="practice-way" data-way="${way}" aria-pressed="${wayNow() === way}">${icon}<span>${title}</span></button>`).join('')}</div>` : '';
+  // How this card is practised: Read, Listen (French → English only) and Speak where it is offered.
+  const ways = [['read', 'Read', eyeIcon], ...(direction === 'fr-en' ? [['listen', 'Listen', headphones]] : []), ...(speakOffered() ? [['speak', 'Speak', micIcon]] : [])];
+  const wayChoice = ways.length > 1 ? `<div class="practice-way" role="group" aria-label="How you practise">${ways.map(([way, title, icon]) => `<button data-action="practice-way" data-way="${way}" aria-pressed="${wayNow() === way}">${icon}<span>${title}</span></button>`).join('')}</div>` : '';
   const zones = `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label${verdict && !right ? ' picked' : ''}" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label${right ? ' picked' : ''}" aria-hidden="true">Knew it →</span></button>`;
   const foot = revealed ? zones : saying ? sayFootHTML() : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>';
   const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start speaking' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
@@ -3237,9 +3239,10 @@ function resetStatsView() {
   pointsDay = '';
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
-// ── Speak (a way of practising a Words card in Cards and Endless, French → English): the learner says each card's
-// English aloud and Echo checks it (api/say/check, lib/say-check.ts). The verdict turns the card, and after
-// SAY_SHOW_MS (and the English, after a miss) grades it as a tap on that half would: a Cards grade or an Endless mark.
+// ── Speak (a way of practising a Words card in Cards and Endless): the learner says each card's answer aloud, the
+// English from French or the French from English, and Echo checks it (api/say/check: lib/say-check.ts, and
+// lib/say-check-fr.ts for French). The verdict turns the card, and after SAY_SHOW_MS (and the English after a miss,
+// or the French always, from English) grades it as a tap on that half would: a Cards grade or an Endless mark.
 // A level meter tells speech from the room's quiet, so an answer ends SAY_QUIET_MS after the learner stops. A wrong
 // verdict waits until SAY_RESUME_MS have passed since their last sound: if they speak again before then they had only
 // paused, and Echo listens on and checks the whole answer again. The learner has SAY_WAIT_MS to start an answer, and
@@ -3476,7 +3479,7 @@ function sayResumes(token, answer) {
 }
 async function sayCheck(card, clip, request) {
   let response;
-  try { response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store', signal: AbortSignal.timeout(SAY_CHECK_MS) }); }
+  try { response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}${direction === 'en-fr' ? '&direction=en-fr' : ''}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store', signal: AbortSignal.timeout(SAY_CHECK_MS) }); }
   catch { throw Object.assign(new Error('Echo couldn’t reach your Mac to check that answer. Check your connection, then tap the card to go on.'), { network: true }); }
   let data;
   try { data = await response.json(); }
@@ -3539,16 +3542,19 @@ async function runSay(token) {
     if (!card || revealed || locked() || loading) { if (!await sayWait(150, token)) return; continue; }
     const key = cardKey(card);
     say.key = key; say.result = null; say.phase = 'prompt'; render();
-    if (!await sayPlay(card.audioUrl, token) && !sayCurrent(token)) return;
+    // English → French prompts with the English recording, where there is one, and always answers with the French.
+    const toFrench = direction === 'en-fr', english = `audio/en/${encodeURIComponent(card.id)}.mp3`;
+    if (!await sayPlay(toFrench ? english : card.audioUrl, token) && !sayCurrent(token)) return;
     if (revealed || cardKey(shownCard()) !== key) continue;
     const result = await sayAnswer(card, token);
     if (!result) return;
     if (result.verdict === 'skip') { say.phase = 'skipped'; continue; }
     revealed = true; say.phase = 'result'; say.result = result;
-    if (result.verdict !== 'right' && result.heard) say.fix = { wordId: card.id, fr: card.fr, request: result.request, heard: result.heard, endless: endlessMode(), state: 'offer' };
-    render(); announce(`${result.verdict === 'right' ? 'Right' : 'Not quite'}: ${card.en}.`);
+    if (result.verdict !== 'right' && result.heard) say.fix = { wordId: card.id, fr: card.fr, request: result.request, heard: result.heard, endless: endlessMode(), direction, state: 'offer' };
+    render(); announce(`${result.verdict === 'right' ? 'Right' : 'Not quite'}: ${toFrench ? card.fr : card.en}.`);
     if (!await sayChime(result.verdict === 'right', token)) return;
-    if (result.verdict !== 'right' && !await sayPlay(`audio/en/${encodeURIComponent(card.id)}.mp3`, token) && !sayCurrent(token)) return;
+    const answerClip = toFrench ? card.audioUrl : result.verdict !== 'right' ? english : null;
+    if (answerClip && !await sayPlay(answerClip, token) && !sayCurrent(token)) return;
     if (!await sayWait(SAY_SHOW_MS, token)) return;
     if (!revealed || cardKey(shownCard()) !== key) continue;
     grade(result.verdict === 'right');
@@ -3561,7 +3567,7 @@ async function sayCorrect() {
   if (!fix || fix.state !== 'offer' || busy) return;
   fix.state = 'sending'; render();
   try {
-    await api('api/say/correct', { method: 'POST', body: JSON.stringify({ word: fix.wordId, request: fix.request, heard: fix.heard }) });
+    await api('api/say/correct', { method: 'POST', body: JSON.stringify({ word: fix.wordId, request: fix.request, heard: fix.heard, direction: fix.direction }) });
     if (fix.endless) await sayRemarkEndless(fix.wordId);
     else await sayRegrade(fix.wordId);
     fix.state = 'done';
@@ -3593,7 +3599,7 @@ const sayQuoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, '').to
 function sayFootHTML() {
   if (!say.running) return say.error ? `<p class="say-foot-note warn" role="alert">${esc(say.error)}</p>` : '';
   const listens = say.phase === 'listening' || say.phase === 'again';
-  const line = { starting: 'Opening the microphone…', prompt: 'Listen', listening: 'Say it in English — take your time', again: `Heard “${sayQuoted(say.result?.heard)}” · still listening`, checking: 'Checking…' }[say.phase] ?? '';
+  const line = { starting: 'Opening the microphone…', prompt: 'Listen', listening: `Say it in ${direction === 'en-fr' ? languageEnglish : 'English'} — take your time`, again: `Heard “${sayQuoted(say.result?.heard)}” · still listening`, checking: 'Checking…' }[say.phase] ?? '';
   const slot = say.phase === 'prompt' ? `<span class="say-speaker">${speaker}</span>` : listens ? '<span class="say-ring"></span>' : say.phase === 'checking' || say.phase === 'starting' ? '<span class="say-busy"></span>' : '';
   return `<div class="say-foot" aria-live="polite"><span class="say-line">${line}</span><span class="say-slot" aria-hidden="true">${slot}</span></div>`;
 }

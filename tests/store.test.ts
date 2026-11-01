@@ -47,6 +47,17 @@ function fixture(at = new Date(2026, 8, 21, 10), vocabulary = words) {
   };
   return { store: open(), open, clock, randomness, dbPath };
 }
+// Words known well French → English, which English → French may take: each card finished there and not due for a
+// week, with two Walkman ✓ marks for a score of SCORE_ONE_RECALL.
+function knowFromFrench(store: Store, dbPath: string, at: Date, ids: string[], marks = 2, dueInDays = 7): void {
+  const db = new Database(dbPath);
+  for (const id of ids) {
+    db.query(`INSERT INTO cards (direction, word_id, introduced_day, active, successes, cycle_misses, completed_day, due_at, fsrs_json, version, last_clean)
+      VALUES ('fr-en', ?, '2026-09-01', 0, 0, 0, '2026-09-01', ?, ?, 1, 1)`).run(id, at.getTime() + dueInDays * 86400000, JSON.stringify(createEmptyCard(at)));
+    for (let mark = 0; mark < marks; mark++) store.recordVerdict({ id: `know-${id}-${mark}`, wordId: id, knew: true });
+  }
+  db.close();
+}
 function answer(snapshot: Snapshot, known: boolean, requestId = `answer-${++requestSequence}`): GradeInput {
   if (!snapshot.current) throw new Error('Test expected an active card.');
   return { direction: snapshot.direction, deck: snapshot.deck, wordId: snapshot.current.id, version: snapshot.current.version, known, requestId };
@@ -86,7 +97,7 @@ describe('working-deck counts and admission', () => {
   });
 
   test('categories share admission and stack priorities; directions keep independent memory', () => {
-    const { store } = fixture();
+    const { store, dbPath, clock } = fixture();
     expect(store.state('fr-en', 'food').stats).toMatchObject({ seenActive: 0, unseenActive: 4, newAvailable: 4 });
     expect(store.state('fr-en', 'all').stats.unseenActive).toBe(8);
     store.setSettings(2);
@@ -96,6 +107,7 @@ describe('working-deck counts and admission', () => {
     expect(travel.stats).toMatchObject({ total: 4, newAvailable: 0, remaining: 0, seenActive: 0, unseenActive: 0 });
     expect(travel.current).toBeNull();
     expect(travel.overview.remaining).toBe(2);
+    knowFromFrench(store, dbPath, clock.value, ['travel-003', 'travel-004']);
     store.start('en-fr', 'travel');
     store.grade(answer(food, true));
     store.grade(answer(store.state('fr-en', 'all'), false));
@@ -106,6 +118,21 @@ describe('working-deck counts and admission', () => {
     expect(store.state('en-fr', 'all').stats).toMatchObject({ seenActive: 1, unseenActive: 1 });
     expect(store.state('fr-en', 'all').stats).toMatchObject({ seenActive: 2, unseenActive: 0 });
     expect(store.browse('en-fr', 'food').every((word) => word.status === 'new')).toBe(true);
+  });
+
+  test('English → French admits only words finished French → English with a score of SCORE_ONE_RECALL or more', () => {
+    const { store, dbPath, clock } = fixture();
+    store.setSettings(8);
+    knowFromFrench(store, dbPath, clock.value, ['food-001', 'travel-001']);
+    knowFromFrench(store, dbPath, clock.value, ['food-002'], 1);
+    knowFromFrench(store, dbPath, clock.value, ['food-003'], 2, -1);
+    store.recordVerdict({ id: 'heard-only-1', wordId: 'food-004', knew: true });
+    store.recordVerdict({ id: 'heard-only-2', wordId: 'food-004', knew: true });
+    expect(store.state('en-fr', 'all').stats).toMatchObject({ newAvailable: 2, notKnown: 6 });
+    const reverse = store.start('en-fr', 'all');
+    expect(progress(store).cards.filter((card) => card.direction === 'en-fr').map((card) => card.word_id).sort()).toEqual(['food-001', 'travel-001']);
+    expect(reverse.stats).toMatchObject({ introducedToday: 2, newAvailable: 0, notKnown: 6 });
+    expect(store.state('fr-en', 'all').stats.notKnown).toBe(0);
   });
 
   test('seen counts only the two unfinished stacks, including undo through completion and stack changes', () => {
@@ -572,7 +599,7 @@ describe('FSRS and transactional protection', () => {
   });
 
   test('undo across categories preserves the other direction and cards admitted after the answer', () => {
-    const { store } = fixture();
+    const { store, dbPath, clock } = fixture();
     store.setSettings(2);
     let state = store.start('fr-en', 'all');
     const first = answer(state, true);
@@ -581,6 +608,7 @@ describe('FSRS and transactional protection', () => {
     state = store.grade(second);
     expect(store.state('fr-en', 'food').undoId).toBeNull();
     expectConflict(() => store.undo('fr-en', 'food', first.requestId));
+    knowFromFrench(store, dbPath, clock.value, ['travel-004']);
     let reverse = store.start('en-fr', 'all');
     reverse = store.grade(answer(reverse, true));
     store.setSettings(3);
@@ -667,7 +695,7 @@ describe('saved progress migration', () => {
 
 describe('extra practice', () => {
   test('extra words add to today only, admit at once, and a retried request applies once', () => {
-    const { store, clock } = fixture();
+    const { store, clock, dbPath } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'all');
     expect(state.stats.newAvailable).toBe(0);
@@ -677,6 +705,7 @@ describe('extra practice', () => {
     expect(state.stats).toMatchObject({ introducedToday: 3, newAvailable: 0, unseenActive: 3 });
     expect(store.addExtraWords(request).stats.introducedToday).toBe(3);
     expect(store.settings().newPerDay).toBe(1);
+    knowFromFrench(store, dbPath, clock.value, ['travel-004']);
     expect(store.state('en-fr', 'all').stats.newAvailable).toBe(1);
     clock.value = new Date(2026, 8, 22, 10);
     state = store.state('fr-en', 'all');

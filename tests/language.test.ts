@@ -41,7 +41,7 @@ test('the page names the language: French’s is served as written; another’s 
   expect([pt.tag, sv.tag, fr.tag]).toEqual(['pt-BR', 'sv', 'fr']);
   const portuguese = languagePage(page, pt);
   expect(portuguese).toContain('<title>Echo · Portuguese practice</title>');
-  expect(portuguese).toContain('(Portuguese → English), is how you practise the card. <strong>Read</strong> shows the Portuguese.');
+  expect(portuguese).toContain('under the card in Cards and Endless, is how you practise the card. <strong>Read</strong> shows the Portuguese.');
   expect(portuguese).toContain('<strong>Say the Portuguese when a card turns</strong>');
   expect(portuguese).toContain('<p><strong>Colours.</strong> Nouns are coloured by gender — blue for masculine, pink for feminine — wherever Echo shows Portuguese (switch it off in Words options, •••).</p>');
   expect(portuguese).toContain('<p data-room="families"><strong>Word families</strong>');

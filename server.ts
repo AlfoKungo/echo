@@ -34,6 +34,7 @@ import type { StreamId } from './comprehension-contract';
 import { backup as snapshot, offsite, OFFSITE_DIR } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
 import { answers, answerTexts, hint, judge, learnable, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
+import { answerTextsFrench, frenchLength, hintFrench, judgeFrench, learnableFrench, saidFrench, wrongGender } from './lib/say-check-fr';
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 import { createNews } from './lib/news';
@@ -759,10 +760,13 @@ async function route(req: Request): Promise<Response> {
     // Speak (a way of practising Words cards): a recording of the learner saying a French word's English, judged
     // against the word's meanings and what they once marked right for it. When that says wrong, the wanted answer is
     // scored against the recording: nearly as likely as what was heard, it was said and recognition misread it. The
-    // verdict only answers: the phone records it as that card's grade or Endless mark, as a tap would be.
+    // verdict only answers: the phone records it as that card's grade or Endless mark, as a tap would be. With
+    // direction=en-fr the learner says the French for the English instead: recognition listens in French and
+    // lib/say-check-fr.ts judges, and an article of the other gender stays wrong, never scored into right.
     if (path === '/api/say/check' && req.method === 'POST' && !roomsOff.includes('say')) {
       if (!req.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new StoreError('Send the recording itself.', 415);
       const wordId = url.searchParams.get('word') ?? '', requestId = url.searchParams.get('request') ?? '';
+      const way = direction(url.searchParams.get('direction') ?? 'fr-en'), toFrench = way === 'en-fr';
       const word = store.word(wordId);
       if (!word) throw new StoreError('This word is not in the vocabulary deck.', 404);
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
@@ -779,22 +783,23 @@ async function route(req: Request): Promise<Response> {
         }
         const english = sayEnglish(wordId, word.en);
         let heard: string;
-        try { heard = await recording.transcribe(hint(english)); }
+        try { heard = toFrench ? await recording.transcribe(hintFrench(word.fr), 'fr') : await recording.transcribe(hint(english)); }
         catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
-        let verdict = judge(heard, english, store.sayAccepted(wordId));
+        let verdict = toFrench ? judgeFrench(heard, word.fr, word.gender, store.sayAccepted(wordId, way)) : judge(heard, english, store.sayAccepted(wordId));
         let gap: number | null = null;
-        const longest = Math.max(...answers(english).map((list) => list.length));
-        if (verdict === 'wrong' && said(heard).split(' ').length <= longest + SCORE_EXTRA_WORDS) {
+        const longest = toFrench ? frenchLength(word.fr) : Math.max(...answers(english).map((list) => list.length));
+        const short = (toFrench ? saidFrench(heard) : said(heard)).split(' ').length <= longest + SCORE_EXTRA_WORDS;
+        if (verdict === 'wrong' && short && !(toFrench && wrongGender(heard, word.fr, word.gender))) {
           try {
-            const [heardScore, ...answerScores] = await recording.score([heard, ...answerTexts(english)]);
+            const [heardScore, ...answerScores] = toFrench ? await recording.score([heard, ...answerTextsFrench(word.fr)], 'fr') : await recording.score([heard, ...answerTexts(english)]);
             gap = Math.round((heardScore! - Math.max(...answerScores)) * 10) / 10;
             if (gap <= SCORE_GAP) verdict = 'right';
           } catch (error) { console.error(`say: scoring failed: ${(error as Error).message}`); }
         }
         // What was heard, kept in the log so a verdict that seems wrong can be looked into afterwards.
-        console.log(`say: ${word.fr} (${word.en}) heard ${JSON.stringify(heard.trim())} → ${verdict}${gap === null ? '' : ` (answer ${gap} below what was heard)`}`);
+        console.log(`say: ${word.fr} (${word.en})${toFrench ? ' in French' : ''} heard ${JSON.stringify(heard.trim())} → ${verdict}${gap === null ? '' : ` (answer ${gap} below what was heard)`}`);
         if (gap !== null) {
-          try { sayClips.keep(requestId, recording.wav, { word: wordId, fr: word.fr, en: word.en, heard, verdict, gap }); }
+          try { sayClips.keep(requestId, recording.wav, { word: wordId, fr: word.fr, en: word.en, heard, verdict, gap, ...(toFrench ? { direction: way } : {}) }); }
           catch (error) { console.error(`say: keeping the clip failed: ${(error as Error).message}`); }
         }
         return json({ verdict, heard, en: word.en });
@@ -806,17 +811,19 @@ async function route(req: Request): Promise<Response> {
       whisper.warm().catch((error: Error) => console.error(`say: recognition did not start: ${error.message}`));
       return json({ ok: true });
     }
-    // Heard wrong: the learner says they said it right. What was heard counts as the word's English from then on,
-    // unless it was giving up or noise (say-check learnable); the phone re-marks the answer itself as right.
+    // Heard wrong: the learner says they said it right. What was heard counts as the word's English (or, for
+    // direction=en-fr, its French) from then on, unless it was giving up or noise (say-check learnable); the phone
+    // re-marks the answer itself as right.
     if (path === '/api/say/correct' && req.method === 'POST' && !roomsOff.includes('say')) {
       const data = await body(req);
       const requestId = String(data.request ?? '');
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
-      const wordId = String(data.word ?? ''), heard = said(String(data.heard ?? ''));
-      const learnt = learnable(heard);
-      if (learnt) store.acceptSaid({ wordId, heard });
+      const way = direction(data.direction ?? 'fr-en'), toFrench = way === 'en-fr';
+      const wordId = String(data.word ?? ''), heard = toFrench ? saidFrench(String(data.heard ?? '')) : said(String(data.heard ?? ''));
+      const learnt = toFrench ? learnableFrench(heard) : learnable(heard);
+      if (learnt) store.acceptSaid({ wordId, heard, direction: way });
       sayClips.markedRight(requestId);
-      console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right${learnt ? `; "${heard}" now counts for it` : ''}`);
+      console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right${learnt ? `; "${heard}" now counts for it${toFrench ? ' in French' : ''}` : ''}`);
       return json({ ok: true });
     }
     const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);

@@ -45,9 +45,10 @@ export interface Store {
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
   // Say: what recognition wrote down for a word when the learner says it heard them right after all; the same words
-  // count as that word's English from then on. The answer itself is re-marked as a Cards grade or an Endless mark.
-  acceptSaid(input: { wordId: string; heard: string }): void;
-  sayAccepted(wordId: string): string[];
+  // count as that word's English (fr-en) or French (en-fr) from then on. The answer itself is re-marked as a Cards
+  // grade or an Endless mark.
+  acceptSaid(input: { wordId: string; heard: string; direction?: Direction }): void;
+  sayAccepted(wordId: string, direction?: Direction): string[];
   endlessNext(input: EndlessInput): EndlessPick;
   endlessMark(input: EndlessMarkInput): void;
   endlessUndo(requestId: string): void;
@@ -366,6 +367,14 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       -- Say it: what recognition wrote down for a word when the learner said its English and was heard wrong
       -- (lib/say-check.ts said()); it counts as that word's English from then on.
       CREATE TABLE IF NOT EXISTS say_accepted (
+        word_id TEXT NOT NULL,
+        heard TEXT NOT NULL,
+        added_at TEXT NOT NULL,
+        PRIMARY KEY (word_id, heard)
+      );
+      -- Say it in French: the same for an English → French card, where what was heard is French
+      -- (lib/say-check-fr.ts saidFrench()); it counts as that word's French from then on.
+      CREATE TABLE IF NOT EXISTS say_accepted_french (
         word_id TEXT NOT NULL,
         heard TEXT NOT NULL,
         added_at TEXT NOT NULL,
@@ -790,15 +799,18 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     reconcileQueue(queue, rows, at, false);
     const seen = new Set([...queue.failed, ...queue.successful]);
     const started = new Set(rows.map((row) => row.word_id));
+    const fromFrench = direction === 'en-fr' ? knownFromFrench(time) : null;
     function summarize(records: CardRow[], count: number, scope: string): Stats {
       const unseen = count - records.length;
       // A word without its French recording (a song word still being recorded, a deck word whose recording failed)
       // cannot be introduced yet, so it is not offered as new.
       const recording = words.filter((word) => !started.has(word.id) && inDeck(word.id, scope) && !ready(word.id)).length;
+      // English → French offers only words known well the other way (knownFromFrench); the rest wait for that.
+      const notKnown = fromFrench ? words.filter((word) => !started.has(word.id) && inDeck(word.id, scope) && ready(word.id) && !fromFrench.has(word.id)).length : 0;
       const stats: Stats = {
         total: count, unseen, seenActive: 0, unseenActive: 0, introducedToday,
-        newAvailable: Math.min(unseen - recording, Math.max(0, preferences.newPerDay + extra - introducedToday)),
-        learning: 0, due: 0, completedToday: 0, remaining: 0, scheduled: 0, scheduledMissed: 0, recording,
+        newAvailable: Math.min(unseen - recording - notKnown, Math.max(0, preferences.newPerDay + extra - introducedToday)),
+        learning: 0, due: 0, completedToday: 0, remaining: 0, scheduled: 0, scheduledMissed: 0, recording, notKnown,
       };
       for (const candidate of records) {
         if (candidate.active === 1 || candidate.due_at <= time) {
@@ -870,13 +882,22 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     return db.transaction(() => snapshot(direction, deck, now()))();
   }
 
-  // Admits new words up to today's allowance: the daily setting plus any extra granted today.
+  // The words English → French may take: those known well French → English, finished there and not yet due again,
+  // with a score of SCORE_ONE_RECALL or more, since a word's French has to be known before it can be found from its
+  // English.
+  function knownFromFrench(time: number): Set<string> {
+    const scores = scoresAt(time);
+    return new Set(rowsForDirection.all('fr-en').filter((row) => row.active === 0 && row.due_at > time && (scores.get(row.word_id) ?? 0) >= SCORE_ONE_RECALL).map((row) => row.word_id));
+  }
+  // Admits new words up to today's allowance: the daily setting plus any extra granted today; English → French only
+  // from knownFromFrench.
   function admit(direction: Direction, deck: string, at: Date): void {
     const day = studyDay(at);
     const rows = rowsForDirection.all(direction);
     const seen = new Set(rows.map((row) => row.word_id));
     const allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
-    const eligible = admissionOrder().filter((word) => inDeck(word.id, deck) && !seen.has(word.id) && ready(word.id));
+    const known = direction === 'en-fr' ? knownFromFrench(at.getTime()) : null;
+    const eligible = admissionOrder().filter((word) => inDeck(word.id, deck) && !seen.has(word.id) && ready(word.id) && (!known || known.has(word.id)));
     for (const word of pickNew(eligible, seen, allowance)) {
       save({
         direction, word_id: word.id, introduced_day: day,
@@ -1205,6 +1226,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const dropVerdict = db.query('DELETE FROM walkman_verdicts WHERE id = ? AND word_id = ?');
   const saveAccepted = db.query('INSERT OR IGNORE INTO say_accepted (word_id, heard, added_at) VALUES (?, ?, ?)');
   const readAccepted = db.query<{ heard: string }, [string]>('SELECT heard FROM say_accepted WHERE word_id = ?');
+  const saveAcceptedFrench = db.query('INSERT OR IGNORE INTO say_accepted_french (word_id, heard, added_at) VALUES (?, ?, ?)');
+  const readAcceptedFrench = db.query<{ heard: string }, [string]>('SELECT heard FROM say_accepted_french WHERE word_id = ?');
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
   // The words of the category (All words: the whole deck) — or, inCards, only those in Cards right now, as its stacks
@@ -1308,12 +1331,12 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (input.knew === null) dropVerdict.run(input.id, input.wordId);
     else saveVerdict.run(input.id, input.wordId, input.knew ? 1 : 0, now().toISOString());
   }
-  function acceptSaid(input: { wordId: string; heard: string }): void {
+  function acceptSaid(input: { wordId: string; heard: string; direction?: Direction }): void {
     if (!wordById.has(input.wordId)) throw new StoreError('This word is not in the vocabulary deck.', 404);
     if (typeof input.heard !== 'string' || !input.heard) throw new StoreError('Nothing was heard to accept.', 400);
-    saveAccepted.run(input.wordId, input.heard, now().toISOString());
+    (input.direction === 'en-fr' ? saveAcceptedFrench : saveAccepted).run(input.wordId, input.heard, now().toISOString());
   }
-  const sayAccepted = (wordId: string) => readAccepted.all(wordId).map((row) => row.heard);
+  const sayAccepted = (wordId: string, direction: Direction = 'fr-en') => (direction === 'en-fr' ? readAcceptedFrench : readAccepted).all(wordId).map((row) => row.heard);
 
   const answersSince = db.query<{ known: number; at: string }, [string]>(`
     SELECT known, graded_at AS at FROM grades WHERE graded_at >= ?
@@ -1462,6 +1485,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       deckLinks: db.query('SELECT category, category_title, word_id FROM deck_links ORDER BY sequence').all(),
       walkmanVerdicts: db.query('SELECT word_id, knew, marked_at FROM walkman_verdicts ORDER BY marked_at').all(),
       sayAccepted: db.query('SELECT word_id, heard, added_at FROM say_accepted ORDER BY added_at').all(),
+      sayAcceptedFrench: db.query('SELECT word_id, heard, added_at FROM say_accepted_french ORDER BY added_at').all(),
       endlessMarks: db.query('SELECT direction, word_id, known, marked_at FROM endless_marks ORDER BY marked_at').all(),
     }))();
   }
