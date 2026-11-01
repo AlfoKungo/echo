@@ -28,9 +28,10 @@ const IDLE = 30 * 60_000;
 // write asks Claude on every answer, news fetches, transcribes and has Claude note every edition, changeit has
 // Claude write its drills, sentencecards has Claude write the sentences of Verbs' In sentences, earsentences
 // (Grammar by ear in Listen) has Claude write its questions, sentences (Sentence cards) has Claude write sentences
-// for one learner's tenses and words, and pairs (Mixed-up pairs in Mistakes) has Claude write sentences for one
-// learner's misses. languages (the switch to Portuguese and Swedish) is the owner's alone.
-const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,changeit,sentencecards,earsentences,sentences,pairs,languages';
+// for one learner's tenses and words, pairs (Mixed-up pairs in Mistakes) has Claude write sentences for one learner's
+// misses, and talk (Talk) runs speech recognition, a voice model and Claude on every line. languages (the switch to
+// Portuguese and Swedish) is the owner's alone.
+const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,changeit,sentencecards,earsentences,sentences,pairs,talk,languages';
 
 export type PilotOptions = {
   data: string; origin: string; ownerData: string; firstPort: number;

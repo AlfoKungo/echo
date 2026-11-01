@@ -128,6 +128,27 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .say-controls small{display:block;margin-top:2px;font-size:var(--fs-2xs);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .say-done{display:grid;place-items:center;min-height:50px;margin:0;padding:0 6px;font-size:var(--fs-sm);line-height:1.3;text-align:center;color:var(--violet)}
 @media(prefers-reduced-motion:reduce){.say-verdict,.say-speaker{animation:none}.say-busy{animation-duration:2.4s}}
+/* Talk: Echo's lines on the left by shade, the learner's on the right in violet's soft fill, a correction as a muted
+   serif line under the learner's; the status and buttons stay at the foot of the screen while the lines grow above.
+   A tap on an Echo line turns it to its English in the same place (both sit in one grid cell, the line as tall as the
+   longer), and back, so nothing moves. */
+.talk{max-width:640px;margin:auto;display:flex;flex-direction:column;min-height:100dvh}
+.talk .section-top{margin-bottom:6px}
+.talk-topic{margin:0;min-height:22px}
+.talk-thread{flex:1;display:flex;flex-direction:column;gap:10px;padding:14px 0 18px}
+.talk-line{max-width:86%;padding:10px 14px;border-radius:var(--r-xl);text-align:left;line-height:1.4}
+.talk-line.echo{align-self:flex-start;display:grid;min-height:44px;background:var(--card);border-bottom-left-radius:6px}
+.talk-line.echo>span{grid-area:1/1;align-self:center}
+.talk-line.echo:active{background:var(--card-hover)}
+.talk-line.you{align-self:flex-end;background:var(--violet-soft);border-bottom-right-radius:6px}
+.talk-fr{display:block;font-family:var(--serif);font-size:var(--fs-xl);color:var(--ink)}
+.talk-en{display:block;font-size:var(--fs-lg);color:var(--muted)}
+.talk-line[aria-expanded=false] .talk-en,.talk-line[aria-expanded=true] .talk-fr{visibility:hidden}
+.talk-fix{align-self:flex-end;max-width:86%;margin:-4px 6px 0;font-family:var(--serif);font-size:var(--fs-md);line-height:1.4;color:var(--muted);text-align:right}
+.talk-foot{position:sticky;bottom:0;padding:10px 0 calc(env(safe-area-inset-bottom) + 14px);background:var(--page)}
+.talk-status{display:flex;flex-direction:column;align-items:center;gap:2px}
+.talk-status .say-line{min-height:21px}
+.talk-foot .say-controls{margin-top:4px}
 /* Read · Listen · Speak, under the card beside Undo: how the card is practised, one choice, each named in words. */
 .practice-way{flex:1;max-width:340px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;padding:3px;margin-right:10px;border:1px solid var(--frame);border-radius:var(--r-md);background:var(--card)}
 .practice-way button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:38px;padding:0 6px;border-radius:var(--r-sm);font-size:var(--fs-sm);color:var(--muted);white-space:nowrap}

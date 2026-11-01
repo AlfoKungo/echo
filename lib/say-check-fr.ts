@@ -70,6 +70,12 @@ export const learnableFrench = (heard: string) => judgeFrench(heard, '') === 'wr
 export const saidFrench = (heard: string) => heardWords(heard).join(' ');
 // Whether what was heard is the word with an article of the other gender: wrong however likely the word itself.
 export const wrongGender = (heard: string, french: string, gender?: Gender) => find(heardWords(heard), french, gender) === 'gender';
+// Whether recognition heard nothing usable as a line of conversation (Talk): no words but fillers, or only one of its
+// inventions from silence, whole ("Merci." alone, but not "Merci, et toi ?"), or a subtitler's credit.
+export function heardNothing(heard: string): boolean {
+  const whole = plain(heard);
+  return !heardWords(heard).length || NOTHING.includes(whole) || whole.startsWith('sous titr');
+}
 
 export function judgeFrench(heard: string, french: string, gender?: Gender, accepted: readonly string[] = []): SayVerdict {
   const list = heardWords(heard), phrase = list.join(' ');

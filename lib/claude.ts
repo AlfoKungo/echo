@@ -1,17 +1,18 @@
-// Asks Claude (Opus) through the Claude Code command line, signed in as the Mac's user. Runs from a scratch
-// directory so no project instructions are loaded into the request. Songs (lib/songs.ts) and new reading and
-// listening texts (lib/text-topup.ts) both go through here.
+// Asks Claude (Opus unless a call names another model: Talk asks Sonnet, which answers within seconds) through the
+// Claude Code command line, signed in as the Mac's user. Runs from a scratch directory so no project instructions are
+// loaded into the request. Songs (lib/songs.ts) and new reading and listening texts (lib/text-topup.ts) both go through
+// here.
 import { tmpdir } from 'node:os';
 import { StoreError } from './store';
 import { parseFacts, songPrompt, type LyricForm, type WordFacts } from './song-words';
 
 export type ClaudeOptions = { command?: string; model?: string };
-export type Ask = (prompt: string, options: { timeout: number; purpose: string }) => Promise<string>;
+export type Ask = (prompt: string, options: { timeout: number; purpose: string; model?: string }) => Promise<string>;
 
 export function createClaude(options: ClaudeOptions = {}): Ask {
   const command = options.command ?? 'claude';
-  const model = options.model ?? 'opus';
-  return async function ask(prompt, { timeout, purpose }) {
+  const standard = options.model ?? 'opus';
+  return async function ask(prompt, { timeout, purpose, model = standard }) {
     let child: ReturnType<typeof Bun.spawn>;
     try {
       child = Bun.spawn([command, '-p', '--model', model, '--output-format', 'json'], {

@@ -38,6 +38,9 @@ import { answers, answerTexts, hint, judge, learnable, QUIETEST_ANSWER, said, sa
 import { answerTextsFrench, frenchLength, hintFrench, judgeFrench, learnableFrench, saidFrench, wrongGender } from './lib/say-check-fr';
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
+import { createVoice } from './lib/voice';
+import { createTalk } from './lib/talk';
+import { DEFAULT_LINE, lineOf } from './lib/practising';
 import { createNews } from './lib/news';
 import { createChangeIt, layChangeTape, type ChangeTapeItem } from './lib/change-it';
 import { currentLanguage, languagePage, languages, languagesData, ROOMS, type Room } from './lib/language';
@@ -87,7 +90,8 @@ const familyIds = families.map((family) => family.members.map((member) => member
 // A word added from a song joins practice once its recording exists.
 const store = createStore(words, { dbPath, ready: (id) => existsSync(join(language.audio, `${id}.mp3`)), families: familyIds, gender: language.gender });
 // Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
-const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
+const provenance = JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')) as { python: string; model: string; reference: string };
+const python = process.env.ECHO_PYTHON ?? provenance.python;
 // The scripts print one JSON line per clip no take passed for ({"failed": id, "attempts": [...]}); the log names
 // those, with what the checker heard last. Any other failure logs stderr without the libraries' warnings.
 async function runPython(args: string[], env: Record<string, string> = {}): Promise<{ ok: boolean; error: string }> {
@@ -462,6 +466,28 @@ const whisper = createWhisper({
 });
 const sayClips = createSayClips(join(dirname(dbPath), 'say-clips'));
 const whisperSweep = setInterval(() => whisper.sweep(), 60_000);
+// Talk: a spoken conversation in French with Claude (lib/talk.ts), Sonnet unless ECHO_TALK_MODEL names another, as a
+// turn waits on it. Claude's lines are said by the recorded sentences' voice, run like recognition (lib/voice.ts,
+// lib/voice-mlx.py) in the TTS environment, into ECHO_TALK_AUDIO (audio/talk); lines a week untouched are deleted at
+// start and hourly. An Echo without the room (the friends', another language's) has none of it.
+const voice = has('talk') ? createVoice({
+  python, script: join(root, 'lib/voice-mlx.py'), model: provenance.model, reference: join(root, 'voices', provenance.reference),
+  ffmpeg: process.env.ECHO_FFMPEG ?? '/opt/homebrew/bin/ffmpeg', port: Number(process.env.ECHO_VOICE_PORT ?? 7794),
+  dir: process.env.ECHO_TALK_AUDIO ?? join(language.audio, 'talk'),
+}) : null;
+const talk = voice ? createTalk({
+  dbPath, ask, model: process.env.ECHO_TALK_MODEL ?? 'sonnet', speak: voice.say,
+  knowledge: () => ({
+    known: store.listening().filter((word) => word.status !== 'new').map((word) => ({ fr: word.fr, en: word.en })),
+    level: comprehension.summary().levels.find((entry) => entry.mode === 'read')?.label ?? 'A2',
+  }),
+  // A line the Verbs room cannot use (no tense chosen) leaves Talk in the présent.
+  tensesOf: (line) => { try { return verbs.practising((lineOf(line) ?? DEFAULT_LINE) as never).tenses; } catch { return ['pres']; } },
+}) : null;
+const sweepTalkClips = () => { try { const gone = voice?.sweepClips() ?? 0; if (gone) console.log(`talk: deleted ${gone} lines untouched for a week`); } catch (error) { console.error(`talk: sweeping old lines failed: ${(error as Error).message}`); } };
+sweepTalkClips();
+const talkClipSweep = setInterval(sweepTalkClips, 60 * 60_000);
+const voiceSweep = setInterval(() => voice?.sweep(), 60_000);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
 // Walkman tapes live in memory, the latest few only; clips are re-read whenever they are rebuilt.
@@ -844,6 +870,45 @@ async function route(req: Request): Promise<Response> {
       console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right${learnt ? `; "${heard}" now counts for it${toFrench ? ' in French' : ''}` : ''}`);
       return json({ ok: true });
     }
+    // Talk (lib/talk.ts). Opening Talk warms the voice and recognition, so the first lines are not kept waiting on them
+    // loading. A start has Claude write Echo's opener and the voice say it; a turn hears the learner's recording in
+    // French, then Claude answers and the voice says it. Both run past Bun's 10 s for a request.
+    if (talk && voice && path.startsWith('/api/talk/') && req.method === 'POST') {
+      if (path === '/api/talk/warm') {
+        voice.warm().catch((error: Error) => console.error(`talk: the voice did not start: ${error.message}`));
+        whisper.warm().catch((error: Error) => console.error(`talk: recognition did not start: ${error.message}`));
+        return json({ ok: true });
+      }
+      server.timeout(req, 60);
+      const seconds = (ms: number) => `${(ms / 1000).toFixed(1)} s`;
+      if (path === '/api/talk/start') {
+        const { view, ms } = await talk.start(await body(req));
+        console.log(`talk: ${view.topic.fr}: Echo opens ${JSON.stringify(view.lines[0]?.fr)} (claude ${seconds(ms.claude)}, voice ${seconds(ms.voice)}, total ${seconds(ms.total)})`);
+        return json(view);
+      }
+      if (path === '/api/talk/turn') {
+        if (!req.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new StoreError('Send the recording itself.', 415);
+        const clip = new Uint8Array(await req.arrayBuffer());
+        if (!clip.length || clip.length > 8_000_000) throw new StoreError('That recording is empty or too long.');
+        const { turn, ms } = await talk.turn({ conversation: url.searchParams.get('conversation') ?? '', request: url.searchParams.get('request') ?? '' }, async (prompt) => {
+          let recording: Recording;
+          try { recording = await whisper.open(clip); }
+          catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
+          try {
+            // Room noise the listener took for speech: nothing was said.
+            if (recording.peak < QUIETEST_ANSWER) return null;
+            try { return await recording.transcribe(prompt, 'fr'); }
+            catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
+          } finally {
+            recording.close();
+          }
+        });
+        const said = turn.unclear ? null : turn.conversation.lines.at(-2);
+        const answer = turn.unclear ? null : turn.conversation.lines.at(-1);
+        console.log(`talk: heard ${JSON.stringify(turn.unclear ? turn.heard : said?.fr)}${turn.unclear ? ' → nothing usable' : ` → ${JSON.stringify(answer?.fr)}${said?.correction ? ` (correction ${JSON.stringify(said.correction)})` : ''}${turn.conversation.done ? ' · done' : ''}`} (whisper ${seconds(ms.hear)}, claude ${seconds(ms.claude)}, voice ${seconds(ms.voice)}, total ${seconds(ms.total)})`);
+        return json(turn);
+      }
+    }
     const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
     if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
       const tape = tapes.get(tapeAudio[1]!);
@@ -973,6 +1038,12 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This English recording has not been made yet.' }, 404);
       return audioFile(req, file);
     }
+    const talkLine = voice && path.match(/^\/audio\/talk\/([0-9a-f]{24})\.mp3$/);
+    if (talkLine && (req.method === 'GET' || req.method === 'HEAD')) {
+      const file = Bun.file(voice.file(talkLine[1]!)!);
+      if (!await file.exists()) return json({ error: 'This line is no longer on this Mac.' }, 404);
+      return audioFile(req, file);
+    }
     if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
       const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
       const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
@@ -1035,7 +1106,10 @@ async function stop() {
   clearInterval(changeChecks);
   clearInterval(radioChecks);
   clearInterval(whisperSweep);
+  clearInterval(voiceSweep);
+  clearInterval(talkClipSweep);
   whisper.stop();
+  voice?.stop();
   languageHost?.stop();
   await server.stop(true);
   comprehension.close();
@@ -1047,6 +1121,7 @@ async function stop() {
   dictation?.close();
   grammarEar?.close();
   pairs?.close();
+  talk?.close();
   sounds.close();
   verbs.close();
   ruleCards.close();

@@ -11,11 +11,12 @@ export type LanguageCode = 'fr' | 'pt' | 'sv';
 // hides them. A language has only the rooms it has content for, so the app never shows French material under another.
 // sounds and sentencetape are Listen's Sounds and Tape tabs, which play French-only recordings; sentences is Sentence
 // cards, which keeps to Verbs' French tenses; dictation is Listen's Dictation tab, which keeps to Sentence cards' rules;
-// pairs is Mistakes' Mixed-up pairs, whose sentences Claude writes in French.
+// pairs is Mistakes' Mixed-up pairs, whose sentences Claude writes in French; talk is Talk, a spoken conversation in
+// French with Claude.
 export const ROOMS = [
   'practise', 'words', 'walkman', 'grammar', 'verbs', 'listen', 'read', 'story', 'radio', 'songs', 'mistakes', 'statistics',
   'friends', 'say', 'write', 'news', 'changeit', 'sentencecards', 'earsentences', 'families', 'sounds', 'sentencetape', 'sentences',
-  'dictation', 'pairs',
+  'dictation', 'pairs', 'talk',
 ] as const;
 export type Room = (typeof ROOMS)[number];
 

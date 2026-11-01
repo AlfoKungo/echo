@@ -328,3 +328,17 @@ export type PairView = { id: string; fr: string; en: string; choices: string[]; 
 // pairs: how many mixed-up pairs the learner's misses give now; writing: Claude is writing items for them.
 export type PairsState = { current: PairView | null; writing: boolean; error: string | null; pairs: number };
 export type PairResult = { id: string; right: boolean; answer: string; chosen: string; why: string };
+
+// Talk (Home › Talk, lib/talk.ts): a short spoken conversation with Claude in French on one everyday topic.
+// POST api/talk/start {practising, topic?: a TalkTopic id, for Again} -> TalkView: a new conversation, Echo's opener
+//   in it. POST api/talk/turn?conversation=<id>&request=<rid> with the learner's recording (audio/wav) -> TalkTurn;
+//   sending a request again answers what the first answered. POST api/talk/warm starts the voice and recognition.
+// A line's audio is audio/talk/<name>.mp3, or null when the voice could not say it (the line is shown all the same).
+export type TalkTopic = { id: string; fr: string; en: string };
+// who: echo (Claude) or you (the learner, as recognition heard them; en is empty). correction: on a learner's line,
+// the line with its one fix, or null when it was right.
+export type TalkLine = { who: 'echo' | 'you'; fr: string; en: string; correction: string | null; audio: string | null };
+// done: Echo said its closing line; the conversation takes no more turns.
+export type TalkView = { id: string; topic: TalkTopic; lines: TalkLine[]; done: boolean };
+// unclear: recognition heard nothing usable (Claude was not asked); the learner says it again.
+export type TalkTurn = { unclear: true; heard: string } | { unclear: false; conversation: TalkView };

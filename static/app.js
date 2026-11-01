@@ -559,8 +559,8 @@ function openLanguage(code) {
 // move, and Study.
 function renderHome() {
   loadHomeInfo();
-  // Each room is tinted by its family: lavender for words, grammar and the tapes, green for listening, peach for Story. Story and Radio tiles are filled with their colour.
-  const family = (action) => ['listen', 'read', 'sentences', 'radio'].includes(action) ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
+  // Each room is tinted by its family: lavender for words, grammar and the tapes, green for listening (and Talk), peach for Story. Story and Radio tiles are filled with their colour.
+  const family = (action) => ['listen', 'read', 'sentences', 'radio', 'talk'].includes(action) ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
   const filled = (action) => ['story', 'radio'].includes(action) ? ' fam-fill' : '';
   const tile = (action, symbol, title, hint, mode, disabled = busy, wide = '') => {
     if (roomsOff.has(action)) return '';
@@ -584,6 +584,7 @@ function renderHome() {
     ${tile('sentences', cardsIcon, 'Sentences', 'Hear or read one, then see if you got it', '', busy, ' wide')}
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
+    ${tile('talk', micIcon, 'Talk', 'A short conversation in French, out loud', '', busy, ' wide')}
     `)}${shelf('Hands-free', 'study hands-free', `
     ${row('tape', cassette, 'Words tape', 'data-tape="walkman"', 'walkman')}${row('tape', cassette, 'Verbs tape', 'data-tape="verbs-tape"', 'verbs')}${roomsOff.has('sentencetape') ? '' : row('tape', cassette, 'Sentences tape', 'data-tape="listen-tape"', 'listen')}${row('radio', radioIcon, `Today’s Radio · ${radioHint()}`)}
     `)}${shelf('Study', 'study home-study', `
@@ -596,7 +597,7 @@ function roomTabs(action, current, tabs) {
 }
 // ⓘ: what the room does, from its part of How it works (index.html, data-info).
 function infoButton(room) { return `<button class="icon" data-action="info" data-info-room="${room}" aria-label="How this works" aria-haspopup="dialog">${infoIcon}</button>`; }
-const INFO_TITLES = { words: 'Words', listen: 'Listen', read: 'Read', sentences: 'Sentences', verbs: 'Verbs', grammar: 'Grammar', practise: 'Practise', mistakes: 'Mistakes', story: 'Story', radio: 'Radio' };
+const INFO_TITLES = { words: 'Words', listen: 'Listen', read: 'Read', sentences: 'Sentences', verbs: 'Verbs', grammar: 'Grammar', practise: 'Practise', mistakes: 'Mistakes', story: 'Story', radio: 'Radio', talk: 'Talk' };
 function openInfo(room) {
   const parts = [...aboutDialog.querySelectorAll('[data-info]')].filter((part) => part.dataset.info.split(' ').includes(room)).map((part) => part.innerHTML).join('');
   if (!parts) return;
@@ -669,6 +670,7 @@ function render() {
   else if (screen === 'sounds') renderSounds();
   else if (screen === 'dictation') renderDictation();
   else if (screen === 'pairs') renderPairs();
+  else if (screen === 'talk') renderTalk();
   else if (screen === 'sound') renderSound();
   else if (screen === 'verbs') renderVerbs();
   else if (screen === 'verbs-all') renderVerbAll();
@@ -3281,10 +3283,11 @@ let sayWake = null;         // the screen wake lock
 let sayInterrupt = null;    // ends whatever the run is waiting on (a sound or the microphone) when it stops
 let sayGiveUp = null;       // ends the listening as Don't know
 let saySkip = null;         // ends the listening for this card without an answer (it was turned by hand, or changed)
-// Opens the microphone into sayContext; false when Say stopped while it opened.
-async function sayOpenMic(token) {
+// Opens the microphone into sayContext; false when the run (Say's, or Talk's with its `current`) stopped while it
+// opened. Talk listens with these same helpers, each given Talk's own `current`; the two never run at once.
+async function sayOpenMic(token, current = sayCurrent) {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
-  if (!sayCurrent(token) || !sayContext) { stream.getTracks().forEach((track) => track.stop()); return false; }
+  if (!current(token) || !sayContext) { stream.getTracks().forEach((track) => track.stop()); return false; }
   const context = sayContext;
   await context.resume().catch(() => {});
   const source = context.createMediaStreamSource(stream);
@@ -3343,18 +3346,18 @@ function stopSay(message = '') {
 }
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && say.running) stopSay('Speak paused when the screen locked or Echo went to the background. Tap the card to go on.'); });
 const sayCurrent = (token) => say.running && token === say.token;
-function sayWait(ms, token) {
-  return new Promise((resolve) => { const timer = setTimeout(() => { sayInterrupt = null; resolve(sayCurrent(token)); }, ms); sayInterrupt = () => { clearTimeout(timer); sayInterrupt = null; resolve(false); }; });
+function sayWait(ms, token, current = sayCurrent) {
+  return new Promise((resolve) => { const timer = setTimeout(() => { sayInterrupt = null; resolve(current(token)); }, ms); sayInterrupt = () => { clearTimeout(timer); sayInterrupt = null; resolve(false); }; });
 }
 // Plays one recording to its end; false when it could not play or the run stopped meanwhile. The browser can pause
 // a clip on its own (iPhone does as the microphone opens or closes, Chrome as a new capture starts): it is played on
 // once, then left; and a clip that never ends gives up after SAY_CLIP_MS, so Speak never waits on it for good.
 const SAY_CLIP_MS = 10000;
-function sayPlay(url, token) {
+function sayPlay(url, token, current = sayCurrent, longest = SAY_CLIP_MS) {
   return new Promise((resolve) => {
     let resumed = false;
-    const limit = setTimeout(() => done(false), SAY_CLIP_MS);
-    const done = (played) => { clearTimeout(limit); sayAudio.onended = sayAudio.onerror = sayAudio.onpause = null; sayInterrupt = null; resolve(played && sayCurrent(token)); };
+    const limit = setTimeout(() => done(false), longest);
+    const done = (played) => { clearTimeout(limit); sayAudio.onended = sayAudio.onerror = sayAudio.onpause = null; sayInterrupt = null; resolve(played && current(token)); };
     sayAudio.onended = () => done(true); sayAudio.onerror = () => done(false);
     sayAudio.onpause = () => { if (sayAudio.ended) return; if (resumed) { done(false); return; } resumed = true; sayAudio.play().catch(() => done(false)); };
     sayInterrupt = () => { sayAudio.onpause = null; sayAudio.pause(); done(false); };
@@ -3410,8 +3413,9 @@ function sayRing(level, now) {
 // they began; 'dontknow' when they tap Don't know, 'silent' when nothing was said by `deadline`, 'skip' when the card
 // was turned by hand or another card came, null if Say stopped meanwhile. `answer` is what was heard so far; passed
 // back in, listening goes on with it after a pause, and its sound goes on being kept until the next listen or
-// sayAnswer lets it go.
-function sayListen(token, deadline, answer = null) {
+// sayAnswer lets it go. Talk passes its own run (`current`), what takes it away (`away`, for 'skip'), and longer
+// pauses and lines (`quiet`, `longest`), as a sentence in conversation has more of both than a word.
+function sayListen(token, deadline, answer = null, { current = sayCurrent, away = () => revealed || cardKey(shownCard()) !== say.key, quiet = SAY_QUIET_MS, longest = SAY_LONGEST_MS } = {}) {
   return new Promise((resolve) => {
     const rate = sayContext.sampleRate;
     const heard = answer ?? { blocks: [], began: performance.now(), floor: null, spokeAt: 0, lastLoud: 0, dropped: 0 };
@@ -3432,8 +3436,8 @@ function sayListen(token, deadline, answer = null) {
     saySkip = () => finish('skip');
     // Every 50 ms: the level in dB against the room's quiet, which is learned while nobody speaks.
     const timer = setInterval(() => {
-      if (!sayCurrent(token)) return finish(null);
-      if (revealed || cardKey(shownCard()) !== say.key) return finish('skip');
+      if (!current(token)) return finish(null);
+      if (away()) return finish('skip');
       const level = sayLevel(), now = performance.now();
       // A microphone can give pure zeros (just opened, or noise suppression in a silent room). The room's quiet
       // starts no louder than -50 dB, in case the first real sound is already the learner's voice, and is learned
@@ -3451,7 +3455,7 @@ function sayListen(token, deadline, answer = null) {
       const target = Math.max(0, Math.min(1, (level - heard.floor - 8) / 22));
       shown += (target - shown) * (target > shown ? 0.6 : 0.15);
       sayRing(shown, now);
-      if (heard.spokeAt && (now - heard.lastLoud > SAY_QUIET_MS || now - heard.spokeAt > SAY_LONGEST_MS)) finish('speech');
+      if (heard.spokeAt && (now - heard.lastLoud > quiet || now - heard.spokeAt > longest)) finish('speech');
       else if (!heard.spokeAt && now > deadline) finish('silent');
       // Only about a second from before the learner speaks is kept, however long they think.
       while (!heard.spokeAt && heard.blocks.length > 1 && (heard.blocks.length - 1) * heard.blocks[0].length > rate) heard.dropped += heard.blocks.shift().length;
@@ -3622,6 +3626,152 @@ function sayControlsHTML() {
   if (fix.state === 'done') return `<div class="say-controls two">${dontKnow}<p class="say-done">Counted as right · <span lang="${languageTag}">${frEsc(fix.fr)}</span></p></div>`;
   const onIt = say.phase === 'result' && shownCard()?.id === fix.wordId;
   return `<div class="say-controls two">${dontKnow}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right${onIt ? '' : `<small><span lang="${languageTag}">${frEsc(fix.fr)}</span> · “${sayQuoted(fix.heard)}”</small>`}</button></div>`;
+}
+// ── Talk (Home › Talk): a short spoken conversation in French with Claude on one everyday topic (lib/talk.ts). Start
+// opens the microphone with Speak's capture, kept open to the end as Speak keeps it, and asks for Echo's opener; then
+// Echo's line plays (Speaking), Echo listens (Listening) until the learner stops for TALK_QUIET_MS, and the recording
+// goes to the Mac, which hears it, has Claude answer and says the answer (Thinking). A recording the Mac made nothing
+// of is said so, and Echo listens again. A tap on Echo's line shows its English, in space the line keeps for it. After
+// Echo's closing line, Again talks on the same topic and New topic on another. Stop, leaving Talk, nothing said for
+// TALK_WAIT_MS or the screen locking pause it; Go on listens again. A turn the Mac answers after a pause still lands
+// in the conversation, as the Mac has kept it.
+const TALK_QUIET_MS = 1200;
+const TALK_LONGEST_MS = 20000;
+const TALK_WAIT_MS = 60000;
+// A turn waits on recognition, Claude and the voice: about 7 s warm, more while the models load.
+const TALK_TURN_MS = 60000;
+const TALK_CLIP_MS = 20000;
+// phase: idle (before Start) · starting · thinking · speaking · listening · paused · done
+// view: the conversation (TalkView); heard: what the Mac last heard that was nothing usable, null after a real line;
+// shown: indexes of Echo's lines with their English showing.
+let talk = { phase: 'idle', running: false, token: 0, view: null, heard: null, error: '', shown: new Set() };
+let talkSeen = 0;          // lines on screen at the last render, so a new one scrolls into view
+const talkCurrent = (token) => talk.running && token === talk.token;
+function openTalk() { if (move('talk', true)) fetch('api/talk/warm', { method: 'POST' }).catch(() => {}); }
+// Opens the microphone inside the learner's tap (Safari asks then), then `next` runs while it stays open.
+async function talkOpen(next) {
+  if (talk.running) return;
+  if ('audioSession' in navigator && navigator.audioSession.type === 'playback') navigator.audioSession.type = 'auto';
+  sayAudio.src = SILENT_WAV; sayAudio.play().catch(() => {});
+  sayContext ??= new (window.AudioContext || window.webkitAudioContext)();
+  sayContext.resume().catch(() => {});
+  talk = { ...talk, running: true, phase: 'starting', error: '', heard: null, token: talk.token + 1 };
+  const token = talk.token;
+  render();
+  try {
+    if (!await sayOpenMic(token, talkCurrent)) return;
+  } catch (error) {
+    talkRelease();
+    talk = { ...talk, running: false, phase: talk.view ? 'paused' : 'idle', error: error.name === 'NotAllowedError'
+      ? 'Echo needs the microphone to talk. Allow it for this site (in Safari: aA → Website Settings → Microphone).'
+      : `The microphone could not start: ${error.message}` };
+    render();
+    return;
+  }
+  try { sayWake = await navigator.wakeLock?.request('screen') ?? null; } catch { sayWake = null; }
+  if (talkCurrent(token)) next(token);
+}
+// A new conversation: on `topic` (Again) or on one the Mac picks (New topic, Start).
+function startTalk(topic = '') {
+  talk.view = null; talk.shown = new Set();
+  talkOpen(async (token) => {
+    talk.phase = 'thinking'; render();
+    let view;
+    try { view = await api('api/talk/start', { method: 'POST', body: JSON.stringify({ practising: vbPractising(), ...(topic ? { topic } : {}) }), limit: TALK_TURN_MS }); }
+    catch (error) { if (talkCurrent(token)) pauseTalk(error.message); return; }
+    if (!talkCurrent(token)) return;
+    talk.view = view;
+    await talkSpeak(token);
+    runTalk(token);
+  });
+}
+function resumeTalk() { if (talk.view) talkOpen(runTalk); }
+function talkRelease() {
+  sayInterrupt?.();
+  sayAudio.pause();
+  sayWake?.release().catch(() => {}); sayWake = null;
+  sayCloseMic(); sayCapture = null;
+  sayContext?.close().catch(() => {}); sayContext = null;
+}
+// Stops listening and lets go of the microphone; `message` says why, when it was not the learner's choice.
+function pauseTalk(message = '') {
+  if (!talk.running) return;
+  talk = { ...talk, running: false, phase: talk.view ? 'paused' : 'idle', error: message, token: talk.token + 1 };
+  talkRelease();
+  if (screen === 'talk') render();
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && talk.running) pauseTalk('Talk paused when the screen locked or Echo went to the background.'); });
+// Echo's last line, played (Speaking); a line the voice could not say is shown for a moment instead.
+async function talkSpeak(token) {
+  const line = talk.view.lines.at(-1);
+  talk.phase = 'speaking'; render();
+  return line?.audio ? sayPlay(line.audio, token, talkCurrent, TALK_CLIP_MS) : sayWait(1500, token, talkCurrent);
+}
+// Listens and answers, turn after turn, until the conversation is over or Talk pauses.
+async function runTalk(token) {
+  while (talkCurrent(token)) {
+    if (talk.view.done) {
+      talk = { ...talk, running: false, phase: 'done', token: talk.token + 1 };
+      talkRelease(); render();
+      return;
+    }
+    talk.phase = 'listening'; render();
+    const heard = await sayListen(token, performance.now() + TALK_WAIT_MS, null, { current: talkCurrent, away: () => screen !== 'talk', quiet: TALK_QUIET_MS, longest: TALK_LONGEST_MS });
+    sayCapture = null;
+    if (!heard || heard === 'skip' || !talkCurrent(token)) return;
+    if (heard === 'silent') { pauseTalk(); return; }
+    talk.phase = 'thinking'; render();
+    let turn;
+    try { turn = await talkTurn(token, heard.clip, requestId()); }
+    catch (error) { if (talkCurrent(token)) pauseTalk(error.message); return; }
+    if (!turn || !talkCurrent(token)) return;
+    if (turn.unclear) { talk.heard = turn.heard; continue; }
+    talk.heard = null;
+    await talkSpeak(token);
+  }
+}
+// Sends one recording; a request lost on the way is sent again after 1 and 2 seconds with the same id, which the Mac
+// answers as it answered the first. Null if Talk paused meanwhile.
+async function talkTurn(token, clip, request) {
+  const id = talk.view.id;
+  for (const pause of [1000, 2000, 0]) {
+    let response;
+    try { response = await fetch(`api/talk/turn?conversation=${encodeURIComponent(id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store', signal: AbortSignal.timeout(TALK_TURN_MS) }); }
+    catch {
+      if (!pause) throw new Error('Echo couldn’t reach your Mac. Check your connection, then tap Go on.');
+      if (!await sayWait(pause, token, talkCurrent)) return null;
+      continue;
+    }
+    let data;
+    try { data = await response.json(); } catch { throw new Error('Your Mac returned an unreadable response.'); }
+    if (!response.ok) throw new Error(data.error || `Talk failed (${response.status}).`);
+    if (!data.unclear && talk.view?.id === id) { talk.view = data.conversation; if (screen === 'talk' && !talkCurrent(token)) render(); }
+    return data;
+  }
+}
+function renderTalk() {
+  const { view, phase } = talk, running = talk.running;
+  const lines = (view?.lines ?? []).map((line, index) => {
+    if (line.who === 'you') return `<div class="talk-line you"><span class="talk-fr" lang="${languageTag}">${frEsc(line.fr)}</span></div>${line.correction ? `<p class="talk-fix"><span class="sr-only">Better: </span><span lang="${languageTag}">${frEsc(line.correction)}</span></p>` : ''}`;
+    const shown = talk.shown.has(index);
+    return `<button class="talk-line echo" data-action="talk-en" data-index="${index}" aria-expanded="${shown}"><span class="talk-fr" lang="${languageTag}">${frEsc(line.fr)}</span><span class="talk-en" lang="en">${esc(line.en)}</span></button>`;
+  }).join('');
+  const quoted = sayQuoted(talk.heard);
+  const status = phase === 'listening' ? (talk.heard === null ? 'Listening' : `Didn’t catch that${quoted ? ` (“${quoted}”)` : ''} · Listening`)
+    : phase === 'thinking' || phase === 'starting' ? 'Thinking' : phase === 'speaking' ? 'Speaking' : esc(talk.error);
+  const slot = phase === 'listening' ? '<span class="say-ring"></span>' : phase === 'speaking' ? `<span class="say-speaker">${speaker}</span>` : running ? '<span class="say-busy"></span>' : '';
+  const controls = running ? '<div class="say-controls"><button class="secondary" data-action="talk-stop">Stop</button></div>'
+    : phase === 'done' ? '<div class="say-controls two"><button class="primary" data-action="talk-again">Again</button><button class="secondary" data-action="talk-new">New topic</button></div>'
+    : phase === 'paused' ? '<div class="say-controls two"><button class="primary" data-action="talk-resume">Go on</button><button class="secondary" data-action="talk-new">New topic</button></div>'
+    : '<div class="say-controls"><button class="primary" data-action="talk-start">Start</button></div>';
+  const topic = view ? `<span lang="${languageTag}">${frEsc(view.topic.fr)}</span> · ${esc(view.topic.en)}` : '';
+  main.innerHTML = `${noticeHTML()}<section class="talk"><div class="section-top">${back('Home', 'home')}<div><span class="stream-label">Talk</span>${infoButton('talk')}</div></div>
+    <p class="caption talk-topic">${topic}</p><div class="talk-thread">${lines}</div>
+    <div class="talk-foot"><div class="talk-status" aria-live="polite"><span class="say-line">${status}</span><span class="say-slot" aria-hidden="true">${slot}</span></div>${controls}</div></section>`;
+  const count = view?.lines.length ?? 0;
+  // The foot sticks to the screen's bottom, so the page's own end is where the newest line shows above it.
+  if (count > talkSeen) window.scrollTo(0, document.documentElement.scrollHeight);
+  talkSeen = count;
 }
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
 // then can hear both. A round is ten pairs, the ones missed most first.
@@ -5619,6 +5769,8 @@ function show(next) {
   if (!tapeScreen(name)) { heardSaying = ''; heardResume = false; }
   // Leaving the cards lets go of the microphone; moving between Cards and Endless keeps it.
   if (name !== 'practice') stopSay();
+  // Leaving Talk pauses it; coming back shows the conversation, and Go on listens again.
+  if (name !== 'talk') pauseTalk();
   if (name === 'home') homeInfo.at = 0;
   screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
   if (name === 'home') fetchState();
@@ -6098,6 +6250,11 @@ document.addEventListener('click', (event) => {
   if (!button && screen === 'sentences' && event.target.closest('#sc-card')) { revealSentence(); return; }
   if (action === 'dict-play') { if (dict?.item) playFrench(dict.item.audio); return; }
   if (action === 'dict-next') { if (dict?.result) loadDictation([dict.item.id]); return; }
+  if (action === 'talk-start' || action === 'talk-new') { startTalk(); return; }
+  if (action === 'talk-again') { startTalk(talk.view?.topic.id); return; }
+  if (action === 'talk-stop') { pauseTalk(); return; }
+  if (action === 'talk-resume') { resumeTalk(); return; }
+  if (action === 'talk-en') { const index = Number(button.dataset.index); if (!talk.shown.delete(index)) talk.shown.add(index); render(); return; }
   if (action === 'pairs-pick') { choosePair(Number(button.dataset.index)); return; }
   if (action === 'pairs-next') { nextPair(); return; }
   if (action === 'pairs') { loadPairs(); return; }
@@ -6247,6 +6404,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'story-answer') { const q = Number(button.dataset.q); if (storyAnswers[q] === null && !storyView?.read) { storyAnswers[q] = Number(button.dataset.storyChoice); render(); } }
   else if (action === 'story-finish') finishStory();
   else if (action === 'radio') openRadio();
+  else if (action === 'talk') openTalk();
   else if (action === 'radio-toggle') toggleRadio();
   else if (action === 'radio-seek') { radioAudio.currentTime = Number(button.dataset.at); if (radioAudio.paused) playRadio(); }
   else if (action === 'walkman-toggle') toggleWalkman();
