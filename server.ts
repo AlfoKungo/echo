@@ -20,13 +20,14 @@ import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, englishClip, frenchClip, layStory, radioClip, radioClipExists, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
-import { createVerbTables, TENSE_NAMES, TENSES, type Tense, type Verb } from './lib/verbs';
+import { conjugate, createVerbTables, TENSE_NAMES, TENSES, type Tense, type Verb } from './lib/verbs';
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
 import { createRuleCards, foldedTenses } from './lib/rule-cards';
 import { FRENCH, verbClip, type VerbGrammar } from './lib/verb-grammar';
 import { loadPtVerbs, PORTUGUESE } from './lib/verbs-pt';
 import { SWEDISH, svVerbs } from './lib/verbs-sv';
 import { createVerbSentences } from './lib/verb-sentences';
+import { createPairs } from './lib/pairs';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -82,8 +83,9 @@ mkdirSync(dirname(dbPath), { recursive: true });
 // deck (content/families.json, content/word-building.json), so another language has none yet.
 const families = language.code === 'fr' ? loadFamilies(root, words) : [];
 const patterns = language.code === 'fr' ? loadPatterns(root, families) : [];
+const familyIds = families.map((family) => family.members.map((member) => member.id));
 // A word added from a song joins practice once its recording exists.
-const store = createStore(words, { dbPath, ready: (id) => existsSync(join(language.audio, `${id}.mp3`)), families: families.map((family) => family.members.map((member) => member.id)), gender: language.gender });
+const store = createStore(words, { dbPath, ready: (id) => existsSync(join(language.audio, `${id}.mp3`)), families: familyIds, gender: language.gender });
 // Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
 const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
 // The scripts print one JSON line per clip no take passed for ({"failed": id, "attempts": [...]}); the log names
@@ -144,9 +146,11 @@ const comprehensionOn = has('listen') || has('read');
 let bank: Bank = comprehensionOn ? await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes], language) : { sentences: [], passages: [] };
 // Grammar by ear (made below, once the rooms are known) shows its questions between Listen's.
 const between = (stream: StreamId) => (stream === 'listen' && grammarEar ? { ear: grammarEar.offer() } : {});
+// Mixed-up pairs (made below too) are one of Mistakes' groups.
+const mixedPairs = () => pairs?.labels() ?? { count: 0, examples: [] };
 // Each language's Listen plays its own recordings (audio/<code>/comprehension outside French).
 const comprehensionAudio = { audioDir: join(language.audio, 'comprehension'), languageName: language.english };
-let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between, ...comprehensionAudio });
+let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), mixedPairs, between, ...comprehensionAudio });
 // Sentence cards (French): the bank's sentences and the ones written for the room (<data>/sentence-cards, recorded
 // into audio/sentences), each with the tenses lib/tenses.ts finds in it, worked out once whenever the pool is built.
 const sentenceCardsOn = has('sentences');
@@ -185,7 +189,7 @@ const texts = createTextTopup({
   reload: async () => {
     bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes], language);
     const previous = comprehension;
-    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between, ...comprehensionAudio });
+    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), mixedPairs, between, ...comprehensionAudio });
     setTimeout(() => previous.close(), 60_000);
     await buildCardPool();
   },
@@ -426,6 +430,20 @@ const grammarEar = roomsOff.includes('earsentences') ? null : createGrammarEar({
   listenAnswersSince: (since) => comprehension.answeredSince('listen', since),
 });
 if (grammarEar) void textsStarted.then(() => grammarEar.check());
+// Mixed-up pairs (Mistakes): two started words the learner keeps confusing, each in sentences Claude (Opus) writes
+// ahead from their misses, a batch at start and whenever few are left (lib/pairs.ts); ECHO_PAIRS=off stops the
+// writing. Nothing is recorded. An Echo without the room (the friends') has none of it.
+const pairs = roomsOff.includes('pairs') ? null : createPairs({
+  dbPath, ask, enabled: () => claudeJob('ECHO_PAIRS'),
+  words: () => store.browse('fr-en', 'all'),
+  families: familyIds,
+  verbForms: (wordId) => {
+    const verb = verbTables.verbs().find((entry) => entry.id === wordId);
+    return verb ? TENSES.flatMap((tense) => conjugate(verb, tense).flatMap((form) => form?.accepted ?? [])) : [];
+  },
+  known: () => store.listening().filter((word) => word.status !== 'new').map((word) => ({ fr: word.fr, en: word.en })),
+});
+void textsStarted.then(() => pairs?.prepare());
 // The signed-in learner's name, in the friends' Echo (pilot/router.ts): the app shows it beside Sign out.
 const learnerName = process.env.ECHO_LEARNER?.trim() ?? '';
 const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -860,6 +878,8 @@ async function route(req: Request): Promise<Response> {
     }
     // A Grammar by ear answer (the question itself comes with Listen's state, under ear).
     if (grammarEar && path === '/api/ear/answer' && req.method === 'POST') return json(grammarEar.answer(await body(req)));
+    if (pairs && path === '/api/pairs' && req.method === 'GET') return json(pairs.state());
+    if (pairs && path === '/api/pairs/answer' && req.method === 'POST') return json(pairs.answer(await body(req)));
     if (path.startsWith('/api/write') && !roomsOff.includes('write')) {
       if (path === '/api/write' && req.method === 'GET') return json(writeIt.state());
       if (path === '/api/write/check' && req.method === 'POST') { const data = await body(req); return json(await writeIt.check(data)); }
@@ -1026,6 +1046,7 @@ async function stop() {
   sentenceCards?.close();
   dictation?.close();
   grammarEar?.close();
+  pairs?.close();
   sounds.close();
   verbs.close();
   ruleCards.close();

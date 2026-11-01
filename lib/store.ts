@@ -155,6 +155,14 @@ export function successGap(seen: number): number {
 // A word missed this many times shows, on its answer side, up to ALONGSIDE words of its deck missed most with it.
 const TROUBLE_MISSES = 6;
 const ALONGSIDE = 3;
+// The ids of the words of a word's deck missed most besides it (at least twice each), once it has been missed
+// TROUBLE_MISSES times; none before. A card's trouble and Mixed-up pairs (lib/pairs.ts) both read it.
+export function missedAlongside(wordId: string, misses: Map<string, number>, category: (id: string) => string | undefined): string[] {
+  if ((misses.get(wordId) ?? 0) < TROUBLE_MISSES) return [];
+  const own = category(wordId);
+  return [...misses].filter(([id, missed]) => id !== wordId && missed >= 2 && own !== undefined && category(id) === own)
+    .sort((left, right) => right[1] - left[1]).slice(0, ALONGSIDE).map(([id]) => id);
+}
 type HistoricalGrade = { before: CardRow; known: number; graded_at: string };
 const stackNames: VocabularyStack[] = ['unseen', 'failed', 'successful'];
 // Among words already seen today, missed ones come twice as often as ones answered right.
@@ -691,9 +699,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   function trouble(wordId: string, misses: Map<string, number>): CardTrouble | undefined {
     const count = misses.get(wordId) ?? 0;
     if (count < TROUBLE_MISSES) return undefined;
-    const category = wordById.get(wordId)!.category;
-    const alongside = [...misses].filter(([id, missed]) => id !== wordId && missed >= 2 && wordById.get(id)?.category === category)
-      .sort((left, right) => right[1] - left[1]).slice(0, ALONGSIDE).map(([id]) => { const { fr, en, gender } = wordById.get(id)!; return { fr, en, ...(gender ? { gender } : {}) }; });
+    const alongside = missedAlongside(wordId, misses, (id) => wordById.get(id)?.category)
+      .map((id) => { const { fr, en, gender } = wordById.get(id)!; return { fr, en, ...(gender ? { gender } : {}) }; });
     const hook = hookFor.get(wordId)?.hook;
     return { misses: count, alongside, ...(hook ? { hook } : {}) };
   }

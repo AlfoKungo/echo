@@ -8,10 +8,14 @@ import type { Word, WordFamily, WordPattern } from '../contract';
 export const MAX_MEMBERS = 8;
 const NOTE_MAX = 120;
 
-// A word's French without its article or reflexive pronoun, accents or case: what a shared root is looked for in.
-function stem(fr: string): string {
-  return fr.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-    .replace(/^(le |la |les |l'|l’|un |une |se |s'|s’)/, '').replace(/[^a-z]/g, '');
+// A word's French without its article or reflexive pronoun, accents or case, its spaces kept.
+export function bareFrench(fr: string): string {
+  return fr.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+    .replace(/^(le |la |les |l'|l’|un |une |se |s'|s’)/, '');
+}
+// The same, letters only: what a shared root is looked for in.
+export function stem(fr: string): string {
+  return bareFrench(fr).replace(/[^a-z]/g, '');
 }
 function sharesRoot(a: string, b: string): boolean {
   const [x, y] = [stem(a), stem(b)];

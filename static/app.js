@@ -668,6 +668,7 @@ function render() {
   else if (screen === 'write') renderWrite();
   else if (screen === 'sounds') renderSounds();
   else if (screen === 'dictation') renderDictation();
+  else if (screen === 'pairs') renderPairs();
   else if (screen === 'sound') renderSound();
   else if (screen === 'verbs') renderVerbs();
   else if (screen === 'verbs-all') renderVerbAll();
@@ -4646,6 +4647,68 @@ function renderDictation() {
     <div class="dict-result">${result ? dictResultHTML() : ''}</div>`);
 }
 
+// ── Mixed-up pairs (Mistakes): a French sentence with one blank, its English, and two words the learner keeps
+// confusing, a form of each; only one fits (lib/pairs.ts). The item carries its answer, so a choice settles at once
+// and is saved behind; Next waits for that save, so the Mac never shows the same item again. With none ready while
+// Claude writes, the screen looks again every few seconds.
+let pairsView = null;    // api/pairs: { current, writing, error, pairs }
+let pairsChosen = null;  // the choice made on the item on screen, null before one
+let pairsSaving = null;  // that choice's save
+let pairsPoll = 0;
+function openPairs() { if (move('pairs', true)) { pairsView = null; loadPairs(); } }
+async function loadPairs() {
+  clearTimeout(pairsPoll);
+  if (!pairsView) { loading = true; render(); }
+  retryAction = null;
+  try { pairsView = await api('api/pairs'); pairsChosen = null; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'pairs' }; }
+  loading = false;
+  if (screen !== 'pairs') return;
+  render();
+  if (!pairsView?.current && pairsView?.writing) pairsPoll = setTimeout(() => { if (screen === 'pairs') loadPairs(); }, 5000);
+  else main.querySelector('.choice:not(:disabled)')?.focus({ preventScroll: true });
+}
+function choosePair(index) {
+  const item = pairsView?.current;
+  if (!item || pairsChosen !== null || !item.choices[index]) return;
+  pairsChosen = item.choices[index]; notice = null;
+  render();
+  main.querySelector('[data-action="pairs-next"]')?.focus({ preventScroll: true });
+  pairsSaving = api('api/pairs/answer', { method: 'POST', body: JSON.stringify({ requestId: requestId(), id: item.id, choice: pairsChosen }) })
+    .catch((error) => { notice = { message: error.message }; if (screen === 'pairs') render(); });
+}
+async function nextPair() {
+  if (pairsChosen === null) return;
+  await pairsSaving;
+  loadPairs();
+}
+function renderPairs() {
+  const header = `<div class="section-top">${back('Mistakes', 'mistakes')}<div><span class="stream-label">Mixed-up pairs</span>${infoButton('mistakes')}</div></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream pairs">${header}${body}</section>`; };
+  if (loading || !pairsView) { shell(loading ? '<div class="loading-state" role="status">Opening Mixed-up pairs…</div>' : ''); return; }
+  const { current, writing, error, pairs } = pairsView;
+  if (!current) {
+    shell(writing ? '<div class="loading-state" role="status">Claude is writing sentences for your pairs. This takes about a minute.</div>'
+      : !pairs ? '<div class="stream-empty"><p>No mixed-up pairs yet.</p><button class="secondary" data-action="mistakes">Back to mistakes</button></div>'
+      : `<div class="notice" role="alert"><span>${esc(error || 'No sentences yet.')}</span><button class="quiet" data-action="pairs">Try again</button></div>`);
+    return;
+  }
+  const settled = pairsChosen !== null, answer = current.check.answer, right = pairsChosen === answer;
+  const [before, after = ''] = current.fr.split('___');
+  const gap = settled ? `<span class="vb-sentence-form">${frEsc(answer)}</span>` : '<span class="vb-sentence-gap"><span class="sr-only">blank</span></span>';
+  const choices = current.choices.map((choice, index) => {
+    const isAnswer = settled && choice === answer, missed = settled && !right && choice === pairsChosen;
+    const mark = isAnswer ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>'
+      : missed ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
+    return `<button class="choice${missed ? ' wrong' : isAnswer ? ' right' : ''}" data-action="pairs-pick" data-index="${index}" ${settled ? 'disabled' : ''}><span lang="${languageTag}">${frEsc(choice)}</span>${mark}</button>`;
+  }).join('');
+  const feedback = settled ? `<div class="feedback${right ? '' : ' warn'}" role="status"><strong>${right ? 'That’s right.' : 'Not quite.'}</strong><p>${esc(current.check.why)}</p></div>` : '';
+  shell(`<p class="caption pairs-words"><span lang="${languageTag}">${frEsc(current.words.join(' · '))}</span>${current.again ? ' · again' : ''}</p>
+    <p class="vb-sentence" lang="${languageTag}">${frEsc(before)}${gap}${frEsc(after)}</p><p class="source-word" lang="en">${esc(current.en)}</p>
+    <div class="answer-area"><div class="choice-list" role="group" aria-label="Which word fits?">${choices}</div></div>${feedback}
+    ${settled ? '<div class="stream-actions pinned"><button class="primary" data-action="pairs-next">Next</button></div>' : ''}`);
+}
+
 // ── Type it: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
 // more forms are chosen from the answers so far while a few are still waiting.
 const topUpVerbForms = () => topUpVerbStream(verbForms, 'api/verbs/round', () => verbForms, 'verbs-forms');
@@ -5022,8 +5085,10 @@ async function finishStory() {
   if (storyView?.read) loadStory(true);
 }
 function openGroup(id) {
-  // Verb forms practise the shaky forms in Type it; every other group is a focus stream.
-  if (mistakes?.find((group) => group.id === id)?.kind === 'verbs') { verbFormsOverride = { set: 'shaky', verbIds: [], tenses: Object.keys(VB_TENSES) }; if (move('verbs-forms', true)) startVerbForms(); return; }
+  // Verb forms practise the shaky forms in Type it, and Mixed-up pairs is its own screen; every other group is a focus stream.
+  const kind = mistakes?.find((group) => group.id === id)?.kind;
+  if (kind === 'pairs') { openPairs(); return; }
+  if (kind === 'verbs') { verbFormsOverride = { set: 'shaky', verbIds: [], tenses: Object.keys(VB_TENSES) }; if (move('verbs-forms', true)) startVerbForms(); return; }
   focusId = id; if (move(`focus|${id}`, true)) enterMixed();
 }
 async function loadMistakes(quiet = false) {
@@ -5539,6 +5604,7 @@ function show(next) {
   if (name !== 'lyrics') clearTimeout(lyricsPoll);
   if (name !== 'story') clearTimeout(storyPoll);
   if (name !== 'verbs') clearTimeout(verbsPoll);
+  if (name !== 'pairs') clearTimeout(pairsPoll);
   // Leaving the Radio pauses it where it is; coming back plays on from there.
   if (name !== 'statistics') { stopStatsPlay(); stopVerbPlay(); }
   if (name !== 'radio') { clearTimeout(radioPoll); if (!radioAudio.paused) radioAudio.pause(); }
@@ -5976,6 +6042,7 @@ function retry() {
   else if (action.type === 'statistics') loadStatistics();
   else if (action.type === 'sounds') loadSounds();
   else if (action.type === 'dictation') loadDictation();
+  else if (action.type === 'pairs') loadPairs();
   else if (action.type === 'sound') startSoundRound();
   else if (action.type === 'verbs') loadVerbs();
   else if (action.type === 'verbs-forms') startVerbForms();
@@ -6031,6 +6098,9 @@ document.addEventListener('click', (event) => {
   if (!button && screen === 'sentences' && event.target.closest('#sc-card')) { revealSentence(); return; }
   if (action === 'dict-play') { if (dict?.item) playFrench(dict.item.audio); return; }
   if (action === 'dict-next') { if (dict?.result) loadDictation([dict.item.id]); return; }
+  if (action === 'pairs-pick') { choosePair(Number(button.dataset.index)); return; }
+  if (action === 'pairs-next') { nextPair(); return; }
+  if (action === 'pairs') { loadPairs(); return; }
   if (action === 'sc-play') { const card = scCard(); if (card?.audio) playFrench(card.audio); return; }
   if (action === 'sc-got' || action === 'sc-not') { markSentence(action === 'sc-got'); return; }
   if (action === 'sc-mode') { chooseSentenceMode(button.dataset.mode); return; }
@@ -6319,6 +6389,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'write') loadWrite();
   else if (screen === 'sounds') loadSounds();
   else if (screen === 'dictation') loadDictation();
+  else if (screen === 'pairs') loadPairs();
   else if (screen === 'sound') startSoundRound();
   else if (screen === 'verbs' || screen === 'verbs-all' || screen === 'verbs-tenses') loadVerbs();
   else if (screen === 'verbs-forms') startVerbForms();

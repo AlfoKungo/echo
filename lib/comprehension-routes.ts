@@ -19,6 +19,8 @@ export type ComprehensionDeps = {
   grammar: GrammarStore;
   // The verb forms at -2 or lower, lowest first (lib/verb-drills.ts): Mistakes shows them as one group.
   shakyForms?: () => { form: string }[];
+  // The mixed-up pairs written for, most missed first (lib/pairs.ts): Mistakes shows them as one group.
+  mixedPairs?: () => { count: number; examples: string[] };
   // What the stream shows between its questions (in Listen, Grammar by ear: lib/grammar-ear.ts), merged into its
   // state when it is read and after Next.
   between?: (stream: StreamId) => Record<string, unknown>;
@@ -141,6 +143,8 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
         examples, stream: 'focus:missed',
       });
     }
+    const pairs = deps.mixedPairs?.();
+    if (pairs?.count) groups.push({ id: 'pairs', kind: 'pairs', title: 'Mixed-up pairs', count: pairs.count, examples: pairs.examples });
     return { groups: groups.filter((group) => group.count > 0).sort((a, b) => b.count - a.count || a.title.localeCompare(b.title)) };
   }
 

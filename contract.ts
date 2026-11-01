@@ -317,3 +317,14 @@ export type DictationMark = 'missing' | 'extra' | 'accent';
 export type DictationSegment = { text: string; mark?: DictationMark };
 // why: one line for each word where a missed letter is one French does not say.
 export type DictationResult = { verdict: DictationVerdict; given: DictationSegment[]; expected: DictationSegment[]; fr: string; en: string; why: string[] };
+
+// Mixed-up pairs (Mistakes › Mixed-up pairs, lib/pairs.ts): two started words the learner keeps confusing, in a French
+// sentence where only one of them fits. Answers live in their own table and change no word score.
+// GET api/pairs -> PairsState: the item to show, least seen first, a missed one back after three others.
+// POST api/pairs/answer {requestId, id, choice: one of the item's choices} -> PairResult; once per requestId.
+// words: the pair's two dictionary words, always in one order (porter · emporter). check settles the item on the phone
+// the moment it is answered; the saved answer is the record.
+export type PairView = { id: string; fr: string; en: string; choices: string[]; words: string[]; again: boolean; check: { answer: string; why: string } };
+// pairs: how many mixed-up pairs the learner's misses give now; writing: Claude is writing items for them.
+export type PairsState = { current: PairView | null; writing: boolean; error: string | null; pairs: number };
+export type PairResult = { id: string; right: boolean; answer: string; chosen: string; why: string };
