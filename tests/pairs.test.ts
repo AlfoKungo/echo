@@ -69,15 +69,15 @@ describe('finding the pairs', () => {
     expect(lookAlike('lent', 'haut')).toBe(false);
   });
 
-  test('ranks family pairs, look-alikes and the trouble list by misses, never a word with itself or an unstarted one', () => {
+  test('ranks family and look-alike pairs before trouble-list pairs, each by misses, never a word with itself or an unstarted one', () => {
     const pairs = minePairs(fixtureStore().browse('fr-en', 'all'), families);
     expect(pairs.map((pair) => [pairLabel(pair), pair.misses, pair.kinds.toSorted()])).toEqual([
       ['porter · emporter', 11, ['alongside', 'family', 'look-alike']],
-      ['haut · lent', 10, ['alongside']],
       ['apporter · emporter', 6, ['family', 'look-alike']],
       ['porter · apporter', 5, ['family', 'look-alike']],
       ['la cuisine · cuisiner', 3, ['family', 'look-alike']],
       ['la main · le pain', 2, ['look-alike']],
+      ['haut · lent', 10, ['alongside']],
     ]);
     for (const pair of pairs) expect(pair.a.id).not.toBe(pair.b.id);
     expect(pairs.flatMap((pair) => [pair.a.id, pair.b.id])).not.toContain('verbs-090');

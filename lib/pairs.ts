@@ -63,10 +63,11 @@ export function lookAlike(x: string, y: string): boolean {
   return long.length - short.length <= limit && editDistance(x, y, limit) <= limit;
 }
 
-// The mixed-up pairs in a learner's words, most missed first: every started word missed at least once, with each
-// started word of its family, each started look-alike, and its trouble list (lib/store.ts missedAlongside). A word is
-// never paired with itself or with another word of the same French, and two words' French make one pair however
-// many copies of them songs added (the most missed is kept).
+// The mixed-up pairs in a learner's words: every started word missed at least once, with each started word of its
+// family, each started look-alike, and its trouble list (lib/store.ts missedAlongside). Family and look-alike pairs
+// come first, most missed first, since two words alike in shape or root are the ones mistaken for each other; pairs
+// only missed alongside each other follow. A word is never paired with itself or with another word of the same
+// French, and two words' French make one pair however many copies of them songs added (the most missed is kept).
 export function minePairs(words: PairWord[], families: string[][]): Pair[] {
   const started = words.filter((word) => word.status !== 'new');
   const byId = new Map(started.map((word) => [word.id, word]));
@@ -90,7 +91,8 @@ export function minePairs(words: PairWord[], families: string[][]): Pair[] {
     for (const id of missedAlongside(word.id, misses, (other) => byId.get(other)?.category)) add(word, byId.get(id), 'alongside');
   }
   const seen = new Set<string>();
-  return [...found.values()].sort((p, q) => q.misses - p.misses || p.a.id.localeCompare(q.a.id) || p.b.id.localeCompare(q.b.id))
+  const alike = (pair: Pair) => pair.kinds.some((kind) => kind !== 'alongside') ? 0 : 1;
+  return [...found.values()].sort((p, q) => alike(p) - alike(q) || q.misses - p.misses || p.a.id.localeCompare(q.a.id) || p.b.id.localeCompare(q.b.id))
     .filter((pair) => { const key = [stem(pair.a.fr), stem(pair.b.fr)].sort().join('|'); if (seen.has(key)) return false; seen.add(key); return true; });
 }
 
