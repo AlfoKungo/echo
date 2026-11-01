@@ -71,8 +71,9 @@ export type EndlessInput = { direction: Direction; deck: string; exclude?: strin
 export type EndlessPick = { card: CardView | null; pool: number };
 export type EndlessMarkInput = { requestId: string; direction: Direction; wordId: string; known: boolean };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn;
+// 'reverse' (English first) plays well-known words as English, a pause to say the French, then the French twice;
 // 'sentences' plays Listen/Read sentences instead of words; 'verbs' the verb forms tape, 'change' the Change it tape.
-export type WalkmanChoice = 'scored' | 'groups' | 'sentences' | 'verbs' | 'change';
+export type WalkmanChoice = 'scored' | 'groups' | 'reverse' | 'sentences' | 'verbs' | 'change';
 // Adding a word the learner tapped in a French text, always in the fr-en direction.
 // added: it was never started, so today admits it as an extra word, leaving the daily allowance untouched.
 // already-practising: it is in the working deck already (a cycle in progress, or finished and due again).
@@ -85,9 +86,10 @@ export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due
 // leaves the vocabulary untouched. On a verb tape, fr is the prompt (verb · tense · person), en the form, and verb
 // names the form for marks and replays. On a Change it tape, fr is the answer and en its English; change holds the
 // sentence, the cue and the changed form, and the times mark the sentence (start), the cue (recallAt), the pause to
-// say it (meaningAt) and the answer (againAt).
+// say it (meaningAt) and the answer (againAt). On a reverse tape fr and en are still the French and English, but the
+// English plays at start and the French at meaningAt and againAt.
 export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; verb?: { verbId: string; tense: string; person: number; audio: string }; change?: { id: number; base: string; cue: string; form: string }; start: number; recallAt: number; meaningAt: number; againAt: number; end: number };
-export type WalkmanTape = { id: string; kind: 'words' | 'sentences' | 'verbs' | 'change'; url: string; seconds: number; words: WalkmanWord[] };
+export type WalkmanTape = { id: string; kind: 'words' | 'reverse' | 'sentences' | 'verbs' | 'change'; url: string; seconds: number; words: WalkmanWord[] };
 // A word family: deck words built from one root, simplest first; each later member's note says how it is built.
 export type WordFamily = { members: { id: string; note?: string }[] };
 // A way French builds one word from another, with [from, to] example pairs taken from the word families.

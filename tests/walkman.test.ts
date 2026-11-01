@@ -3,7 +3,8 @@ import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { BrowseWord, Word } from '../contract';
-import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, planSentences, planTape } from '../lib/walkman';
+import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, planSentences, planTape, REVERSE_TIMING } from '../lib/walkman';
+import { SCORE_ONE_RECALL } from '../lib/store';
 
 function seeded(seed: number) {
   return () => {
@@ -134,6 +135,71 @@ describe('planTape by score', () => {
 
   test('a high score still turns up now and then', () => {
     expect(tapes().some((plan) => plan.includes('strong'))).toBe(true);
+  });
+});
+
+describe('English first', () => {
+  const pool = (): (BrowseWord & { score: number })[] => [
+    ...Array.from({ length: 40 }, (_, i) => ({ ...word(`low-${i}`, 'food', 'scheduled'), score: SCORE_ONE_RECALL })),
+    ...Array.from({ length: 40 }, (_, i) => ({ ...word(`high-${i}`, 'food', 'scheduled'), score: 8 })),
+    { ...word('almost', 'food', 'scheduled'), score: SCORE_ONE_RECALL - 0.5 },
+    { ...word('learning', 'food', 'learning'), score: 6 },
+    { ...word('due', 'food', 'due'), score: 6 },
+    ...Array.from({ length: 10 }, (_, i) => ({ ...word(`new-${i}`, 'food', 'new'), score: 0 })),
+  ];
+
+  test('plans only finished words with a score of at least one recall, never a new word', () => {
+    for (let seed = 0; seed < 10; seed++) {
+      const plan = planTape(pool(), 200, seeded(200 + seed), 'reverse');
+      expect(plan).toHaveLength(200);
+      expect(plan.every((id) => id.startsWith('low-') || id.startsWith('high-'))).toBe(true);
+    }
+  });
+
+  test('the lower scores of the well-known words come most', () => {
+    const plans = Array.from({ length: 10 }, (_, i) => planTape(pool(), 200, seeded(300 + i), 'reverse')).flat();
+    const low = plans.filter((id) => id.startsWith('low-')).length;
+    expect(low).toBeGreaterThan(2 * (plans.length - low));
+  });
+
+  test('plans nothing when no word is known well enough', () => {
+    expect(planTape(pool().filter((entry) => entry.score < SCORE_ONE_RECALL || entry.status !== 'scheduled'), 50, seeded(1), 'reverse')).toEqual([]);
+  });
+
+  test('lays each word as the English, a pause, the French, a breath, the French again', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'walkman-'));
+    try {
+      // Each clip's frames carry a third byte naming it, so the laid order can be read back from the tape.
+      const frames = (count: number, mark: number) => {
+        const bytes = new Uint8Array(count * FRAME_BYTES);
+        for (let i = 0; i < count; i++) bytes.set([0xff, 0xf3, mark], i * FRAME_BYTES);
+        return bytes;
+      };
+      mkdirSync(join(dir, 'walkman', 'fr'), { recursive: true });
+      mkdirSync(join(dir, 'walkman', 'en'), { recursive: true });
+      writeFileSync(join(dir, 'walkman', 'silence.mp3'), frames(10, 0));
+      writeFileSync(join(dir, 'walkman', 'fr', 'a.mp3'), frames(25, 1));
+      writeFileSync(join(dir, 'walkman', 'en', 'a.mp3'), frames(40, 2));
+      const words = new Map<string, Word>([['a', { id: 'a', fr: 'le pain', en: 'bread', category: 'x' }]]);
+      const tape = buildTape('t', ['a'], words, createClips(dir), new Set(), 'reverse');
+      expect(tape.kind).toBe('reverse');
+      const [a] = tape.words;
+      expect(a).toMatchObject({ fr: 'le pain', en: 'bread' });
+      const runs: [string, number][] = [];
+      for (let offset = 0; offset < tape.bytes.length; offset += FRAME_BYTES) {
+        const name = ['pause', 'French', 'English'][tape.bytes[offset + 2]!]!;
+        if (runs.at(-1)?.[0] === name) runs.at(-1)![1]++;
+        else runs.push([name, 1]);
+      }
+      const pause = (seconds: number) => Math.round(seconds / FRAME_SECONDS);
+      expect(runs).toEqual([['pause', pause(0.6)], ['English', 40], ['pause', pause(REVERSE_TIMING.recall)], ['French', 25], ['pause', pause(REVERSE_TIMING.afterMeaning)], ['French', 25], ['pause', pause(REVERSE_TIMING.between)]]);
+      expect(REVERSE_TIMING.recall).toBe(3.0);
+      expect(a!.recallAt - a!.start).toBeCloseTo(40 * FRAME_SECONDS, 6);
+      expect(a!.meaningAt - a!.recallAt).toBeCloseTo(3.0, 1);
+      expect(a!.againAt - a!.meaningAt).toBeCloseTo(25 * FRAME_SECONDS + REVERSE_TIMING.afterMeaning, 1);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 

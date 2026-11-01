@@ -185,8 +185,9 @@ let walkmanHeard = (() => {
 let heardSaying = '';
 const heardMarking = new Set();
 function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
-// What the Walkman tab in Words plays, remembered on this device: words by score (the default) or by groups.
-const WALKMAN_CHOICES = { scored: 'By score', groups: 'By groups' };
+// What the Walkman tab in Words plays, remembered on this device: words by score (the default), by groups, or
+// English first (well-known words, the English before the French).
+const WALKMAN_CHOICES = { scored: 'By score', groups: 'By groups', reverse: 'English first' };
 let walkmanChoice = (() => { const saved = readPreference('echo.walkman-words', 'scored'); return saved in WALKMAN_CHOICES ? saved : 'scored'; })();
 function chooseWalkman(choice) {
   if (choice === walkmanChoice || walkman.loading) return;
@@ -684,7 +685,7 @@ function render() {
   else renderHome();
 }
 // What each part of a tape word is called, by tape: its French, the pause to recall it, its meaning, the French again.
-const TAPE_PHASES = { words: ['Listen', 'Recall', 'Meaning', 'Again'], sentences: ['Listen', 'Understand', 'Meaning', 'Again'], verbs: ['Prompt', 'Say it', 'Form', 'Again'], change: ['Sentence', 'Change', 'Say it', 'Answer'] };
+const TAPE_PHASES = { words: ['Listen', 'Recall', 'Meaning', 'Again'], reverse: ['English', 'Say it', 'French', 'Again'], sentences: ['Listen', 'Understand', 'Meaning', 'Again'], verbs: ['Prompt', 'Say it', 'Form', 'Again'], change: ['Sentence', 'Change', 'Say it', 'Answer'] };
 const PHASE_KEYS = ['listen', 'recall', 'meaning', 'again'];
 // The part of the word playing that the tape has reached; '' between words.
 function walkmanPhase() {
@@ -718,6 +719,9 @@ function renderWalkman() {
     ? phase === 'again'
       ? `<p class="wm-fr wm-sentence" lang="${languageTag}">${changedAnswer(word.fr, word.change.form)}</p><p class="wm-en">${esc(word.en)}</p>`
       : `<p class="wm-fr wm-sentence" lang="${languageTag}">${frEsc(word.change.base)}</p><p class="wm-en wm-cue">${phase === 'listen' ? '&nbsp;' : `→ <span lang="${languageTag}">${frEsc(word.change.cue)}</span>`}</p>`
+    // English first keeps the face's two lines: the English on top from the start, the French under it once it plays.
+    : word && tape.kind === 'reverse'
+    ? `<p class="wm-fr" lang="en">${esc(word.en)}</p><p class="wm-en"${walkman.meaning ? ` lang="${languageTag}">${frEsc(word.fr)}` : '>&nbsp;'}</p>`
     : word
     ? `<p class="wm-fr${word.sentence || word.verb ? ' wm-sentence' : ''}" lang="${languageTag}">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
     : '';
@@ -891,7 +895,8 @@ function followTape() {
     walkman.index = index; walkman.meaning = meaning;
     const word = walkman.tape.words[index];
     if (word && 'mediaSession' in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: word.change ? word.change.base : word.fr, artist: meaning ? (word.change ? word.fr : word.en) : '…', album: 'Echo · Walkman', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+      const reverse = walkman.tape.kind === 'reverse';
+      navigator.mediaSession.metadata = new MediaMetadata({ title: word.change ? word.change.base : reverse ? word.en : word.fr, artist: meaning ? (word.change || reverse ? word.fr : word.en) : '…', album: 'Echo · Walkman', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
     }
     if (tapeScreen() && !document.hidden) render();
     return;

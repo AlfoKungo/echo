@@ -445,7 +445,9 @@ function newTape(choice: WalkmanChoice, tenses: Tense[] = ['pres'], practising?:
   const listening = store.listening();
   const tape = choice === 'verbs' ? verbTape(tenses) : choice === 'change' ? changeTape(practising) : choice === 'sentences' ? sentenceTape(listening) : (() => {
     const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
-    return buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
+    const plan = planTape(listening, 600, Math.random, choice);
+    if (choice === 'reverse' && !plan.length) throw new StoreError('English first plays the words you know well, and none is known well enough yet.', 409);
+    return buildTape(crypto.randomUUID(), plan, new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh, choice === 'reverse' ? 'reverse' : 'words');
   })();
   if (!tape.words.length) throw new StoreError(choice === 'verbs' ? 'The verb recordings are still being made on your Mac. Please try again later.' : choice === 'change' ? changeIt!.waitingMessage() : choice === 'sentences' ? 'The sentence recordings are still being made. Please try again later.' : 'The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
@@ -724,7 +726,7 @@ async function route(req: Request): Promise<Response> {
     }
     if (path === '/api/walkman' && req.method === 'POST' && has('walkman')) {
       const data = await body(req);
-      if (data.words !== undefined && !['scored', 'groups', 'sentences', 'verbs', ...(changeIt ? ['change'] : [])].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, sentences, or verbs.', 400);
+      if (data.words !== undefined && !['scored', 'groups', 'reverse', 'sentences', 'verbs', ...(changeIt ? ['change'] : [])].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, English first, sentences, or verbs.', 400);
       const tenses = Array.isArray(data.tenses) ? TENSES.filter((tense) => (data.tenses as unknown[]).includes(tense)) : ['pres' as Tense];
       return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored', tenses, data.practising)));
     }

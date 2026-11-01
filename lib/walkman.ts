@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { BrowseWord, GrammarLevel, WalkmanChoice, WalkmanTape, WalkmanWord, Word } from '../contract';
+import { SCORE_ONE_RECALL } from './store';
 
 // Walkman clips are all encoded the same way: 24 kHz mono MPEG-2 Layer III at 64 kbps, no headers or tags.
 // Every frame is then exactly 192 bytes and 24 ms, so a tape is plain concatenation: clips and silence
@@ -17,6 +18,8 @@ export const WORD_TIMING: Timing = { recall: 2.0, afterMeaning: 0.7, between: 1.
 export const SENTENCE_TIMING: Timing = { recall: 2.5, afterMeaning: 0.8, between: 2.2 };
 // A form: time to say it in your head after its prompt, then the form twice.
 export const VERB_TIMING: Timing = { recall: 3.0, afterMeaning: 0.7, between: 2.0 };
+// English first: the English, time to say the French aloud, the French, a breath, the French again.
+export const REVERSE_TIMING: Timing = { recall: 3.0, afterMeaning: 0.7, between: 2.0 };
 // A familiar word returns only after this many others; a new word returns twice, 10 and 30 words later, so each
 // return is a real recall and the start of a tape, where new words gather, does not circle the same few.
 const SPACING = 15;
@@ -35,8 +38,12 @@ const PICK_HEARD = 0.5;
 // category (the one already most studied that still has new words), and heard twice more later on.
 // The other words are familiar ones. By groups: words being learnt come first, those missed most at the
 // front; then words due for review, then the known words soonest to fade. By score: any started word,
-// drawn at random with low scores far likelier. Listening never changes the vocabulary schedule.
+// drawn at random with low scores far likelier. English first: only words known well (scheduled, with a score of
+// at least SCORE_ONE_RECALL), drawn as by score so the lower of those come most, and never a new word, since a
+// word has to be known before its French can be found from the English. Listening never changes the vocabulary schedule.
 export function planTape(words: (BrowseWord & { score?: number })[], slots: number, random: () => number = Math.random, choice: WalkmanChoice = 'groups'): string[] {
+  if (choice === 'reverse') words = words.filter((word) => word.status === 'scheduled' && (word.score ?? 0) >= SCORE_ONE_RECALL);
+  const drawn = choice === 'scored' || choice === 'reverse';
   const shuffled = <T>(list: T[]) => {
     const copy = [...list];
     for (let i = copy.length - 1; i > 0; i--) {
@@ -49,7 +56,7 @@ export function planTape(words: (BrowseWord & { score?: number })[], slots: numb
   const byDue = (a: BrowseWord, b: BrowseWord) => (a.due ?? '').localeCompare(b.due ?? '');
   const due = words.filter((word) => word.status === 'due').sort(byDue);
   const scheduled = words.filter((word) => word.status === 'scheduled').sort(byDue);
-  const familiar = choice === 'scored'
+  const familiar = drawn
     ? [...learning, ...due, ...scheduled].map((word) => word.id)
     : [...learning, ...due, ...shuffled(scheduled.slice(0, 80))].map((word) => word.id);
   const score = new Map(words.map((word) => [word.id, word.score ?? 0]));
@@ -78,7 +85,7 @@ export function planTape(words: (BrowseWord & { score?: number })[], slots: numb
     return id;
   };
   const nextFamiliar = (slot: number) => {
-    if (choice === 'scored') return drawFamiliar(slot);
+    if (drawn) return drawFamiliar(slot);
     for (let step = 0; step < familiar.length; step++) {
       const index = (pointer + step) % familiar.length;
       const id = familiar[index]!;
@@ -157,7 +164,7 @@ export function planSentences<T extends { level: GrammarLevel; words: string[] }
     .map((entry) => entry.sentence);
 }
 
-export type Tape = { id: string; kind: 'words' | 'sentences' | 'verbs' | 'change'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
+export type Tape = { id: string; kind: 'words' | 'reverse' | 'sentences' | 'verbs' | 'change'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
 // One thing on a tape with its two recordings; sentence marks a whole sentence rather than a word. again is what
 // plays the third time (the French, unless given: a verb tape repeats the form, not the prompt).
 export type TapeItem = Omit<WalkmanWord, 'start' | 'recallAt' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array; again?: Uint8Array };
@@ -183,8 +190,9 @@ export function createClips(audioDir: string) {
   };
 }
 
-// fresh names the words not yet started in Vocabulary, so the history can offer to add them.
-export function buildTape(id: string, plan: string[], byId: Map<string, Word>, clips: ReturnType<typeof createClips>, fresh: Set<string> = new Set(), seconds = TAPE_SECONDS): Tape {
+// fresh names the words not yet started in Vocabulary, so the history can offer to add them. A reverse tape lays
+// each word's English clip first and its French clip twice after it; fr and en still name the French and English.
+export function buildTape(id: string, plan: string[], byId: Map<string, Word>, clips: ReturnType<typeof createClips>, fresh: Set<string> = new Set(), kind: 'words' | 'reverse' = 'words', seconds = TAPE_SECONDS): Tape {
   const silence = clips.silence();
   if (!silence) throw new Error('The Walkman silence frame is missing.');
   function* items(): Generator<TapeItem> {
@@ -192,10 +200,12 @@ export function buildTape(id: string, plan: string[], byId: Map<string, Word>, c
       const word = byId.get(wordId);
       const french = clips.french(wordId);
       const english = clips.english(wordId);
-      if (word && french && english) yield { id: wordId, fr: word.fr, en: word.en, fresh: fresh.has(wordId), french, english };
+      if (!word || !french || !english) continue;
+      const item = { id: wordId, fr: word.fr, en: word.en, fresh: fresh.has(wordId) };
+      yield kind === 'reverse' ? { ...item, french: english, english: french, again: french } : { ...item, french, english };
     }
   }
-  return layTape(id, 'words', items(), silence, WORD_TIMING, seconds);
+  return layTape(id, kind, items(), silence, kind === 'reverse' ? REVERSE_TIMING : WORD_TIMING, seconds);
 }
 
 // Lays items end to end, each as French, a pause, the English, a breath, the French again (or the item's again), until the tape
