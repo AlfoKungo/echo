@@ -969,6 +969,8 @@ async function route(req: Request): Promise<Response> {
 }
 
 function backup() {
+  const cleared = store.pruneUndoSnapshots();
+  if (cleared) console.log(`Echo: cleared ${cleared} undo snapshots older than two days`);
   // The French Echo snapshots every language's database too (lib/languages.ts); a language process never writes to
   // French's backup/ or its daily copy.
   if (process.env.ECHO_DB || language.code !== 'fr') return;

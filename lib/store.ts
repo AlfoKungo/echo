@@ -59,6 +59,8 @@ export interface Store {
   hookless(): { id: string; fr: string; en: string; note?: string; alongside: Pick<Word, 'fr' | 'en'>[] }[];
   setHooks(hooks: { wordId: string; hook: string }[]): void;
   exportData(): unknown;
+  // Clears the queue snapshots of grades older than UNDO_SNAPSHOT_MS. Returns how many were cleared.
+  pruneUndoSnapshots(): number;
   close(): void;
 }
 
@@ -124,6 +126,11 @@ export const SCORE_HALF_LIFE_DAYS = 21;
 // learner's own history: after a first success on a due word, the second came right 97% of the time from score 4 up.
 export const SCORE_ONE_RECALL = 4;
 export const RETENTION = 0.85;
+// Undo restores the queue from the snapshot saved with a grade only while that grade is the latest one standing,
+// which in practice lasts seconds. Snapshots older than this are cleared; undoing such a grade rebuilds the queue
+// from the answer history instead. Each snapshot is the whole queue, so keeping them all would fill most of the
+// database.
+export const UNDO_SNAPSHOT_MS = 2 * 24 * 60 * 60 * 1000;
 // The most words the Board lays out at once.
 export const BOARD_LIMIT = 100;
 // Board's score range runs over Statistics' bars: a score rounds to a whole number, and anything below BOARD_SCORE_LOW
@@ -1072,6 +1079,11 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     }).immediate();
   }
 
+  function pruneUndoSnapshots(): number {
+    const cutoff = new Date(now().getTime() - UNDO_SNAPSHOT_MS).toISOString();
+    return db.query('UPDATE grades SET queue_before_json = NULL WHERE queue_before_json IS NOT NULL AND graded_at < ?').run(cutoff).changes;
+  }
+
   function setSettings(newPerDay: number): Settings {
     if (!Number.isSafeInteger(newPerDay) || newPerDay < 0 || newPerDay > words.length) {
       throw new StoreError(`New words per day must be a whole number from 0 to ${words.length}. Choose 0 to review only.`);
@@ -1474,5 +1486,5 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, board, deckCounts, listening, recordHeard, recordVerdict, acceptSaid, sayAccepted, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, board, deckCounts, listening, recordHeard, recordVerdict, acceptSaid, sayAccepted, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, pruneUndoSnapshots, close: () => db.close() };
 }

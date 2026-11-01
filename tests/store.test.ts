@@ -361,6 +361,24 @@ describe('three-stack selection', () => {
     state = reopened.grade(answer(state, false));
     expect(state.current?.stack).toBe('failed');
   });
+
+  test('pruning clears only snapshots older than two days; undo still restores the queue, and older answers still undo', () => {
+    const { store, clock } = fixture(undefined, thirtyWords);
+    let state = store.start('fr-en', 'all');
+    for (let index = 0; index < 3; index++) state = store.grade(answer(state, false));
+    clock.value = new Date(2026, 8, 24, 10);
+    const before = store.start('fr-en', 'all');
+    state = store.grade(answer(before, true));
+    expect(store.pruneUndoSnapshots()).toBe(3);
+    expect(store.pruneUndoSnapshots()).toBe(0);
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.current?.id).toBe(before.current!.id);
+    expect(state.stats).toEqual(before.stats);
+    const third = state.undoId!;
+    state = store.undo('fr-en', 'all', third);
+    expect(state.undoId).not.toBe(third);
+    expect(progress(store).undos).toHaveLength(2);
+  });
 });
 
 describe('FSRS and transactional protection', () => {
